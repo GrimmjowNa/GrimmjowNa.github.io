@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/26/p2018072602/" itemprop="url">博哥好！</a></h1>
+                <a class="post-title-link" href="/2018/07/26/p2018072602/" itemprop="url">添加cron定期跟新博客</a></h1>
         
 
         <div class="post-meta">
@@ -300,8 +300,12 @@
       
         
           
-            <p>博哥好！</p>
-
+            <h4 id="添加脚本"><a href="#添加脚本" class="headerlink" title="添加脚本"></a>添加脚本</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /path/to/update.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 脚本内容</span><br><span class="line">cur_dateTime="`date +%Y-%m-%d,%H:%M:%s`"</span><br><span class="line">echo "" &gt;&gt; update.log</span><br><span class="line">echo "[update blog]  "$cur_dateTime &gt;&gt;  update.log</span><br><span class="line"></span><br><span class="line">cd /srv/nickBlog</span><br><span class="line">git pull -r</span><br></pre></td></tr></table></figure>
+<p>添加执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /path/to/update.sh</span><br></pre></td></tr></table></figure></p>
+<h4 id="添加cron"><a href="#添加cron" class="headerlink" title="添加cron"></a>添加cron</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 追加 半小时执行一次脚本</span><br><span class="line">*/30 * * * * /path/to/update.sh</span><br></pre></td></tr></table></figure>
+<h4 id="重新启动cron"><a href="#重新启动cron" class="headerlink" title="重新启动cron"></a>重新启动cron</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/cron restart</span><br></pre></td></tr></table></figure>
+<h4 id="查看cron-log"><a href="#查看cron-log" class="headerlink" title="查看cron log"></a>查看cron log</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /var/log/cron.log</span><br></pre></td></tr></table></figure>
           
         
       
