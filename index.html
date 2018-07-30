@@ -2,15 +2,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,10 +50,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
 
 
 
@@ -50,42 +58,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
 
 
 
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nick Na的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Nick Na的博客">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nick Na的博客">
 
 
 
@@ -94,15 +85,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '5.1.4',
+    version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -114,12 +103,33 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/"/>
-
+  
 
 
 
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Nick Na的博客">
+<meta property="og:url" content="http://naguangqing.com/index.html">
+<meta property="og:site_name" content="Nick Na的博客">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nick Na的博客">
+
+
+
+
+
+
+  <link rel="canonical" href="http://naguangqing.com/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Nick Na的博客</title>
   
@@ -131,9 +141,37 @@
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -150,19 +188,21 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Nick Na的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">吾王剑锋所指 我等心之所向</p>
       
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -170,35 +210,45 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -206,12 +256,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -224,17 +282,19 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/26/p2018072602/">
+    <link itemprop="mainEntityOfPage" href="http://naguangqing.com/2018/07/26/p2018072602/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nick Na">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -248,11 +308,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/26/p2018072602/" itemprop="url">添加cron定期更新博客</a></h1>
+                <a class="post-title-link" href="/2018/07/26/p2018072602/" itemprop="url">
+                  添加cron定期更新博客
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -260,19 +330,46 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T10:16:08+08:00">
-                2018-07-26
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-26 10:16:08" itemprop="dateCreated datePublished" datetime="2018-07-26T10:16:08+08:00">2018-07-26</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-30 08:27:24" itemprop="dateModified" datetime="2018-07-30T08:27:24+08:00">2018-07-30</time>
+              
             
           </span>
 
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/26/p2018072602/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/07/26/p2018072602/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -299,17 +396,22 @@
 
       
         
-          
-            <h4 id="添加脚本"><a href="#添加脚本" class="headerlink" title="添加脚本"></a>添加脚本</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /path/to/update.sh</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 脚本内容</span><br><span class="line">cur_dateTime="`date +%Y-%m-%d,%H:%M:%s`"</span><br><span class="line">echo "" &gt;&gt; update.log</span><br><span class="line">echo "[update blog]  "$cur_dateTime &gt;&gt;  update.log</span><br><span class="line"></span><br><span class="line">cd /srv/nickBlog</span><br><span class="line">git pull -r</span><br></pre></td></tr></table></figure>
-<p>添加执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /path/to/update.sh</span><br></pre></td></tr></table></figure></p>
-<h4 id="添加cron"><a href="#添加cron" class="headerlink" title="添加cron"></a>添加cron</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 追加 半小时执行一次脚本</span><br><span class="line">*/30 * * * * /path/to/update.sh</span><br></pre></td></tr></table></figure>
-<h4 id="重新启动cron"><a href="#重新启动cron" class="headerlink" title="重新启动cron"></a>重新启动cron</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/cron restart</span><br></pre></td></tr></table></figure>
-<h4 id="查看cron-log"><a href="#查看cron-log" class="headerlink" title="查看cron log"></a>查看cron log</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /var/log/cron.log</span><br></pre></td></tr></table></figure>
-          
+          <p>为了避免每次更新博客都要连接服务器更新网站，可以在服务器添加<a href="https://baike.baidu.com/item/cron/10952601?fr=aladdin" target="_blank" rel="noopener">cron</a>定期更新站点。</p>
+<h4 id="添加脚本"><a href="#添加脚本" class="headerlink" title="添加脚本"></a>添加脚本</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /path/to/update.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 脚本内容</span><br><span class="line">cur_dateTime="`date +%Y-%m-%d,%H:%M:%s`"</span><br><span class="line">echo "" &gt;&gt; update.log</span><br><span class="line">echo "[update blog]  "$cur_dateTime &gt;&gt;  update.log</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 这里只是简单的从远程同步代码，如果需要做一些特殊的编译之类的操作，可以添加指令</span><br><span class="line">cd /srv/nickBlog</span><br><span class="line">git pull -r</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/26/p2018072602/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -348,17 +450,19 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/26/p2018072601/">
+    <link itemprop="mainEntityOfPage" href="http://naguangqing.com/2018/07/26/p2018072601/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nick Na">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -372,11 +476,21 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/26/p2018072601/" itemprop="url">Blog搭建流程</a></h1>
+                <a class="post-title-link" href="/2018/07/26/p2018072601/" itemprop="url">
+                  Blog搭建流程
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -384,19 +498,46 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T10:16:07+08:00">
-                2018-07-26
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-26 10:16:07" itemprop="dateCreated datePublished" datetime="2018-07-26T10:16:07+08:00">2018-07-26</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-30 08:27:24" itemprop="dateModified" datetime="2018-07-30T08:27:24+08:00">2018-07-30</time>
+              
             
           </span>
 
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/26/p2018072601/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/07/26/p2018072601/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -423,30 +564,22 @@
 
       
         
-          
-            <h4 id="域名购买"><a href="#域名购买" class="headerlink" title="域名购买"></a>域名购买</h4><p>购买域名的途径很多,比如国外<a href="https://sg.godaddy.com/" target="_blank" rel="noopener">GoDaddy</a>，<a href="https://www.name.com/" target="_blank" rel="noopener">name.com</a>, <a href="https://www.namecheap.com/" target="_blank" rel="noopener">namecheap</a> 以及国内的阿里云<a href="https://www.aliyun.com/" target="_blank" rel="noopener">aliyun</a>等.</p>
+          <p>经过一系列的折腾，终于搭建好了自己的博客。主要流程：域名购买，服务器选择，项目搭建，服务器配置等。</p>
+<h4 id="域名购买"><a href="#域名购买" class="headerlink" title="域名购买"></a>域名购买</h4><p>购买域名的途径很多,比如国外<a href="https://sg.godaddy.com/" target="_blank" rel="noopener">GoDaddy</a>，<a href="https://www.name.com/" target="_blank" rel="noopener">name.com</a>, <a href="https://www.namecheap.com/" target="_blank" rel="noopener">namecheap</a> 以及国内的阿里云<a href="https://www.aliyun.com/" target="_blank" rel="noopener">aliyun</a>等.</p>
 <p>可以通过域名价格比较网站<a href="https://www.domcomp.com/" target="_blank" rel="noopener">domcomp</a> 查看购买价格, 但是也不能只是通过价格来决定。</p>
-<h4 id="DNS记录管理"><a href="#DNS记录管理" class="headerlink" title="DNS记录管理"></a>DNS记录管理</h4><p>为了提高DNS刷新速度, 可以域名服务器转到<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a>， <a href="https://www.dnspod.cn/" target="_blank" rel="noopener">DNSPod</a> 等进行解析。</p>
-<h4 id="Blog项目搭建"><a href="#Blog项目搭建" class="headerlink" title="Blog项目搭建"></a>Blog项目搭建</h4><p>最初计划： 做一个简单的Blog站点，使用Markdown编辑blog，然后生成<code>HTML</code>。</p>
-<p><strong>实现一</strong>： 使用 <strong>Sublime Text3</strong> 创建编辑文件，通过插件转为<code>HTML</code>文件，创建一个<code>index.html</code>文件作为主页添加导航功能。</p>
-<p><strong>实现二</strong> 使用<code>Django</code>+<code>vue</code> 开发一个小项目，但是时间精力有限，做起来太麻烦，重心已经不再是Blog内容上了。</p>
-<p><strong>实现三</strong> 发现一些API文档是用<a href="http://www.sphinx-doc.org/en/master/" target="_blank" rel="noopener">sphinx</a>写的，比如<a href="http://flask.pocoo.org/docs/1.0/" target="_blank" rel="noopener">Flask</a>简约条理，注重内容。确实比较适合写教程。</p>
-<p><strong>最终</strong> 选择静态网站生成器<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>，编辑Markdown文档，通过<code>theme</code>中的模板生成<code>HTML</code>，跟最初构想一样，而且可以把重心放在内容上。</p>
-<h4 id="个人折腾记录"><a href="#个人折腾记录" class="headerlink" title="个人折腾记录"></a>个人折腾记录</h4><ul>
-<li>在GoDaddy上购买的域名 naguangqing.com</li>
-<li>添加子域名 blog.naguangqing.com</li>
-<li>将域名服务转到 <a href="https://cloud.tencent.com/document/product/302/5518" target="_blank" rel="noopener">tencent</a></li>
-<li>ssh连接腾讯云服务器</li>
-<li>安装git，在<a href="https://github.com/" target="_blank" rel="noopener">github</a>添加ssh-key</li>
-<li>安装nginx</li>
-<li>获取<a href="https://github.com/" target="_blank" rel="noopener">github</a> 的code</li>
-<li>配置nginx并运行</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/26/p2018072601/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -485,9 +618,6 @@
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -512,39 +642,60 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Nick Na" />
+            
               <p class="site-author-name" itemprop="name">Nick Na</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
+          
+            <nav class="site-state motion-element">
               
-                <a href="/archives/">
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/GrimmjowNa" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:naguangqing@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
             
-
-            
-
-            
-
-          </nav>
-
           
-
-          
-
-          
-          
-
-          
-          
-
           
 
         </div>
@@ -565,16 +716,20 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Nick Na</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -582,12 +737,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
 
 
 
 
         
+
 
 
 
@@ -626,7 +782,11 @@
 
 
 
-  
+
+
+
+
+
 
 
 
@@ -646,16 +806,6 @@
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
     <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
@@ -664,18 +814,13 @@
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
 
 
 
@@ -687,15 +832,11 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -720,7 +861,29 @@
 
 
 
-
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'B1AAijXJHr0Wi3So95XL5Ngo-gzGzoHsz',
+        appKey: 'xIVLJe2FEvQm0h4ogUmpUbaw',
+        placeholder: '评论',
+        avatar:'identicon',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
@@ -737,6 +900,12 @@
   
 
   
+
+  
+  
+
+  
+
   
 
   
