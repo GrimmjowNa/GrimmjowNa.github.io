@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="为了避免每次更新博客都要连接服务器更新网站，可以在服务器添加cron定期更新站点。 添加脚本1sudo vim /path/to/update.sh 123456789# 脚本内容cur_dateTime=&quot;`date +%Y-%m-%d,%H:%M:%s`&quot;echo &quot;&quot; &amp;gt;&amp;gt; update.logecho &quot;[update blog]  &quot;$cur_dateTime &amp;gt;&amp;gt">
+  <meta name="description" content="经过一系列的折腾，终于搭建好了自己的博客。主要流程：域名购买，服务器选择，项目搭建，服务器配置等。 域名购买购买域名的途径很多,比如国外GoDaddy，name.com, namecheap 以及国内的阿里云aliyun等. 可以通过域名价格比较网站domcomp 查看购买价格, 但是也不能只是通过价格来决定。">
 <meta name="keywords" content="经验">
 <meta property="og:type" content="article">
-<meta property="og:title" content="添加cron定期更新博客">
-<meta property="og:url" content="http://naguangqing.com/post/2/index.html">
+<meta property="og:title" content="Blog搭建流程">
+<meta property="og:url" content="http://naguangqing.com/post/p20180726-1/index.html">
 <meta property="og:site_name" content="Nick Na的博客">
-<meta property="og:description" content="为了避免每次更新博客都要连接服务器更新网站，可以在服务器添加cron定期更新站点。 添加脚本1sudo vim /path/to/update.sh 123456789# 脚本内容cur_dateTime=&quot;`date +%Y-%m-%d,%H:%M:%s`&quot;echo &quot;&quot; &amp;gt;&amp;gt; update.logecho &quot;[update blog]  &quot;$cur_dateTime &amp;gt;&amp;gt">
+<meta property="og:description" content="经过一系列的折腾，终于搭建好了自己的博客。主要流程：域名购买，服务器选择，项目搭建，服务器配置等。 域名购买购买域名的途径很多,比如国外GoDaddy，name.com, namecheap 以及国内的阿里云aliyun等. 可以通过域名价格比较网站domcomp 查看购买价格, 但是也不能只是通过价格来决定。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-07-31T06:09:21.291Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="添加cron定期更新博客">
-<meta name="twitter:description" content="为了避免每次更新博客都要连接服务器更新网站，可以在服务器添加cron定期更新站点。 添加脚本1sudo vim /path/to/update.sh 123456789# 脚本内容cur_dateTime=&quot;`date +%Y-%m-%d,%H:%M:%s`&quot;echo &quot;&quot; &amp;gt;&amp;gt; update.logecho &quot;[update blog]  &quot;$cur_dateTime &amp;gt;&amp;gt">
+<meta name="twitter:title" content="Blog搭建流程">
+<meta name="twitter:description" content="经过一系列的折腾，终于搭建好了自己的博客。主要流程：域名购买，服务器选择，项目搭建，服务器配置等。 域名购买购买域名的途径很多,比如国外GoDaddy，name.com, namecheap 以及国内的阿里云aliyun等. 可以通过域名价格比较网站domcomp 查看购买价格, 但是也不能只是通过价格来决定。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://naguangqing.com/post/2/"/>
+  <link rel="canonical" href="http://naguangqing.com/post/p20180726-1/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>添加cron定期更新博客 | Nick Na的博客</title>
+  <title>Blog搭建流程 | Nick Na的博客</title>
   
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://naguangqing.com/post/2/">
+    <link itemprop="mainEntityOfPage" href="http://naguangqing.com/post/p20180726-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nick Na">
@@ -318,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">添加cron定期更新博客
+          <h1 class="post-title" itemprop="name headline">Blog搭建流程
               
             
           </h1>
@@ -343,7 +343,7 @@
                 
               
 
-              <time title="创建时间：2018-07-26 10:16:08" itemprop="dateCreated datePublished" datetime="2018-07-26T10:16:08+08:00">2018-07-26</time>
+              <time title="创建时间：2018-07-26 10:16:07" itemprop="dateCreated datePublished" datetime="2018-07-26T10:16:07+08:00">2018-07-26</time>
             
 
             
@@ -374,8 +374,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/post/2/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/2/" itemprop="commentCount"></span>
+                <a href="/post/p20180726-1/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/p20180726-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -403,14 +403,27 @@
       
 
       
-        <p>为了避免每次更新博客都要连接服务器更新网站，可以在服务器添加<a href="https://baike.baidu.com/item/cron/10952601?fr=aladdin" target="_blank" rel="noopener">cron</a>定期更新站点。</p>
-<h4 id="添加脚本"><a href="#添加脚本" class="headerlink" title="添加脚本"></a>添加脚本</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /path/to/update.sh</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 脚本内容</span><br><span class="line">cur_dateTime="`date +%Y-%m-%d,%H:%M:%s`"</span><br><span class="line">echo "" &gt;&gt; update.log</span><br><span class="line">echo "[update blog]  "$cur_dateTime &gt;&gt;  update.log</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 这里只是简单的从远程同步代码</span><br><span class="line"><span class="meta">#</span> 如果需要做一些特殊的编译之类的操作，可以添加指令</span><br><span class="line">cd /srv/nickBlog</span><br><span class="line">git pull -r</span><br></pre></td></tr></table></figure>
+        <p>经过一系列的折腾，终于搭建好了自己的博客。主要流程：域名购买，服务器选择，项目搭建，服务器配置等。</p>
+<h4 id="域名购买"><a href="#域名购买" class="headerlink" title="域名购买"></a>域名购买</h4><p>购买域名的途径很多,比如国外<a href="https://sg.godaddy.com/" target="_blank" rel="noopener">GoDaddy</a>，<a href="https://www.name.com/" target="_blank" rel="noopener">name.com</a>, <a href="https://www.namecheap.com/" target="_blank" rel="noopener">namecheap</a> 以及国内的阿里云<a href="https://www.aliyun.com/" target="_blank" rel="noopener">aliyun</a>等.</p>
+<p>可以通过域名价格比较网站<a href="https://www.domcomp.com/" target="_blank" rel="noopener">domcomp</a> 查看购买价格, 但是也不能只是通过价格来决定。</p>
 <a id="more"></a>
-<p>添加执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /path/to/update.sh</span><br></pre></td></tr></table></figure></p>
-<h4 id="添加cron"><a href="#添加cron" class="headerlink" title="添加cron"></a>添加cron</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 追加 半小时执行一次脚本</span><br><span class="line">*/30 * * * * /path/to/update.sh</span><br></pre></td></tr></table></figure>
-<h4 id="重新启动cron"><a href="#重新启动cron" class="headerlink" title="重新启动cron"></a>重新启动cron</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/cron restart</span><br></pre></td></tr></table></figure>
-<h4 id="查看cron-log"><a href="#查看cron-log" class="headerlink" title="查看cron log"></a>查看cron log</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /var/log/cron.log</span><br></pre></td></tr></table></figure>
+<h4 id="DNS记录管理"><a href="#DNS记录管理" class="headerlink" title="DNS记录管理"></a>DNS记录管理</h4><p>为了提高DNS刷新速度, 可以域名服务器转到<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a>， <a href="https://www.dnspod.cn/" target="_blank" rel="noopener">DNSPod</a> 等进行解析。</p>
+<h4 id="Blog项目搭建"><a href="#Blog项目搭建" class="headerlink" title="Blog项目搭建"></a>Blog项目搭建</h4><p><strong>最初计划</strong> 做一个简单的Blog站点，使用Markdown编辑blog，然后生成<code>HTML</code>。</p>
+<p><strong>实现一</strong> 使用 <strong>Sublime Text3</strong> 创建编辑文件，通过插件转为<code>HTML</code>文件，创建一个<code>index.html</code>文件作为主页添加导航功能。</p>
+<p><strong>实现二</strong> 使用<code>Django</code>+<code>vue</code> 开发一个小项目，但是时间精力有限，做起来太麻烦，重心已经不再是Blog内容上了。</p>
+<p><strong>实现三</strong> 发现一些API文档是用<a href="http://www.sphinx-doc.org/en/master/" target="_blank" rel="noopener">sphinx</a>写的，比如<a href="http://flask.pocoo.org/docs/1.0/" target="_blank" rel="noopener">Flask</a>简约条理，注重内容。确实比较适合写教程。</p>
+<p><strong>最终</strong> 选择静态网站生成器<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>，编辑Markdown文档，通过<code>theme</code>中的模板生成<code>HTML</code>，跟最初构想一样，而且可以把重心放在内容上。</p>
+<h4 id="个人折腾记录"><a href="#个人折腾记录" class="headerlink" title="个人折腾记录"></a>个人折腾记录</h4><ul>
+<li>在GoDaddy上购买的域名 naguangqing.com</li>
+<li>添加子域名 blog.naguangqing.com</li>
+<li>将域名服务转到 <a href="https://cloud.tencent.com/document/product/302/5518" target="_blank" rel="noopener">tencent</a></li>
+<li>ssh连接腾讯云服务器</li>
+<li>安装git，在<a href="https://github.com/" target="_blank" rel="noopener">github</a>添加ssh-key</li>
+<li>安装nginx</li>
+<li>获取<a href="https://github.com/" target="_blank" rel="noopener">github</a> 的code</li>
+<li>配置nginx并运行</li>
+</ul>
+
       
     </div>
 
@@ -431,7 +444,7 @@
     <strong>本文作者： </strong>Nick Na</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://naguangqing.com/post/2/" title="添加cron定期更新博客">http://naguangqing.com/post/2/</a>
+    <a href="http://naguangqing.com/post/p20180726-1/" title="Blog搭建流程">http://naguangqing.com/post/p20180726-1/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -457,18 +470,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/1/" rel="next" title="Blog搭建流程">
-                <i class="fa fa-chevron-left"></i> Blog搭建流程
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/1/" rel="prev" title="收集一些页面">
-                收集一些页面 <i class="fa fa-chevron-right"></i>
+              <a href="/post/p20180726-2/" rel="prev" title="添加cron定期更新博客">
+                添加cron定期更新博客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -629,7 +638,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加脚本"><span class="nav-number">1.</span> <span class="nav-text">添加脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加cron"><span class="nav-number">2.</span> <span class="nav-text">添加cron</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重新启动cron"><span class="nav-number">3.</span> <span class="nav-text">重新启动cron</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看cron-log"><span class="nav-number">4.</span> <span class="nav-text">查看cron log</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#域名购买"><span class="nav-number">1.</span> <span class="nav-text">域名购买</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS记录管理"><span class="nav-number">2.</span> <span class="nav-text">DNS记录管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Blog项目搭建"><span class="nav-number">3.</span> <span class="nav-text">Blog项目搭建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#个人折腾记录"><span class="nav-number">4.</span> <span class="nav-text">个人折腾记录</span></a></li></ol></div>
             
 
           </div>
