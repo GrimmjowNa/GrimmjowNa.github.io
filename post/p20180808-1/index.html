@@ -108,25 +108,27 @@
 
 
 
-  <meta name="description" content="为了避免每次更新博客都要连接服务器更新网站，可以在服务器添加cron定期更新站点。 添加脚本1sudo vim /path/to/update.sh 123456789# 脚本内容cur_dateTime=&quot;`date +%Y-%m-%d,%H:%M:%s`&quot;echo &quot;&quot; &amp;gt;&amp;gt; update.logecho &quot;[update blog]  &quot;$cur_dateTime &amp;gt;&amp;gt">
-<meta name="keywords" content="经验">
+  <meta name="description" content="p是一个简单的python版本管理工具。 原理和用法 参考文档">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="添加cron定期更新博客">
-<meta property="og:url" content="http://naguangqing.com/post/p20180726-2/index.html">
+<meta property="og:title" content="Python版本管理工具 p">
+<meta property="og:url" content="http://naguangqing.com/post/p20180808-1/index.html">
 <meta property="og:site_name" content="Nick Na的博客">
-<meta property="og:description" content="为了避免每次更新博客都要连接服务器更新网站，可以在服务器添加cron定期更新站点。 添加脚本1sudo vim /path/to/update.sh 123456789# 脚本内容cur_dateTime=&quot;`date +%Y-%m-%d,%H:%M:%s`&quot;echo &quot;&quot; &amp;gt;&amp;gt; update.logecho &quot;[update blog]  &quot;$cur_dateTime &amp;gt;&amp;gt">
+<meta property="og:description" content="p是一个简单的python版本管理工具。 原理和用法 参考文档">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-31T06:09:21.291Z">
+<meta property="og:image" content="http://naguangqing.com/images/python-p.png">
+<meta property="og:updated_time" content="2018-08-08T09:51:50.190Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="添加cron定期更新博客">
-<meta name="twitter:description" content="为了避免每次更新博客都要连接服务器更新网站，可以在服务器添加cron定期更新站点。 添加脚本1sudo vim /path/to/update.sh 123456789# 脚本内容cur_dateTime=&quot;`date +%Y-%m-%d,%H:%M:%s`&quot;echo &quot;&quot; &amp;gt;&amp;gt; update.logecho &quot;[update blog]  &quot;$cur_dateTime &amp;gt;&amp;gt">
+<meta name="twitter:title" content="Python版本管理工具 p">
+<meta name="twitter:description" content="p是一个简单的python版本管理工具。 原理和用法 参考文档">
+<meta name="twitter:image" content="http://naguangqing.com/images/python-p.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://naguangqing.com/post/p20180726-2/"/>
+  <link rel="canonical" href="http://naguangqing.com/post/p20180808-1/"/>
 
 
 
@@ -136,7 +138,7 @@
   };
 </script>
 
-  <title>添加cron定期更新博客 | Nick Na的博客</title>
+  <title>Python版本管理工具 p | Nick Na的博客</title>
   
 
 
@@ -301,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://naguangqing.com/post/p20180726-2/">
+    <link itemprop="mainEntityOfPage" href="http://naguangqing.com/post/p20180808-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nick Na">
@@ -318,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">添加cron定期更新博客
+          <h1 class="post-title" itemprop="name headline">Python版本管理工具 p
               
             
           </h1>
@@ -343,24 +345,12 @@
                 
               
 
-              <time title="创建时间：2018-07-26 10:16:08" itemprop="dateCreated datePublished" datetime="2018-07-26T10:16:08+08:00">2018-07-26</time>
+              <time title="创建时间：2018-08-08 14:23:32 / 修改时间：17:51:50" itemprop="dateCreated datePublished" datetime="2018-08-08T14:23:32+08:00">2018-08-08</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-31 14:09:21" itemprop="dateModified" datetime="2018-07-31T14:09:21+08:00">2018-07-31</time>
               
             
           </span>
@@ -374,8 +364,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/post/p20180726-2/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/p20180726-2/" itemprop="commentCount"></span>
+                <a href="/post/p20180808-1/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/post/p20180808-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -403,14 +393,14 @@
       
 
       
-        <p>为了避免每次更新博客都要连接服务器更新网站，可以在服务器添加<a href="https://baike.baidu.com/item/cron/10952601?fr=aladdin" target="_blank" rel="noopener">cron</a>定期更新站点。</p>
-<h4 id="添加脚本"><a href="#添加脚本" class="headerlink" title="添加脚本"></a>添加脚本</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /path/to/update.sh</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 脚本内容</span><br><span class="line">cur_dateTime="`date +%Y-%m-%d,%H:%M:%s`"</span><br><span class="line">echo "" &gt;&gt; update.log</span><br><span class="line">echo "[update blog]  "$cur_dateTime &gt;&gt;  update.log</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 这里只是简单的从远程同步代码</span><br><span class="line"><span class="meta">#</span> 如果需要做一些特殊的编译之类的操作，可以添加指令</span><br><span class="line">cd /srv/nickBlog</span><br><span class="line">git pull -r</span><br></pre></td></tr></table></figure>
+        <p>p是一个简单的python版本管理工具。</p>
+<p>原理和用法 <a href="https://github.com/qw3rtman/p" target="_blank" rel="noopener">参考文档</a></p>
 <a id="more"></a>
-<p>添加执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /path/to/update.sh</span><br></pre></td></tr></table></figure></p>
-<h4 id="添加cron"><a href="#添加cron" class="headerlink" title="添加cron"></a>添加cron</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 追加 半小时执行一次脚本</span><br><span class="line">*/30 * * * * /path/to/update.sh</span><br></pre></td></tr></table></figure>
-<h4 id="重新启动cron"><a href="#重新启动cron" class="headerlink" title="重新启动cron"></a>重新启动cron</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/cron restart</span><br></pre></td></tr></table></figure>
-<h4 id="查看cron-log"><a href="#查看cron-log" class="headerlink" title="查看cron log"></a>查看cron log</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /var/log/cron.log</span><br></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/qw3rtman/p/releases/download/v0.1.0/p</span><br><span class="line">chmod +x p</span><br><span class="line">mv p /usr/local/bin</span><br></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Usage: p [COMMAND] [args]</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line"></span><br><span class="line">p                              显示已经安装的版本</span><br><span class="line">p status                       显示当前状态</span><br><span class="line">p &lt;version&gt;                    激活python版本&lt;version&gt;</span><br><span class="line">	p latest                     激活最新版的Python</span><br><span class="line">	p stable                     激活最新稳定版的Python</span><br><span class="line">p use &lt;version&gt; [args ...]     激活python&lt;version&gt;并带参数</span><br><span class="line">p bin &lt;version&gt;                显示Python&lt;version&gt;路径</span><br><span class="line">p rm &lt;version ...&gt;             移除给定版本的Python</span><br><span class="line">p prev                         还原到上一个激活版本</span><br><span class="line">p ls                           显示可用的Python版本</span><br><span class="line">	p ls latest                  显示最新可用的Python版本</span><br><span class="line">	p ls stable                  显示最新可用稳定的Python版本</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line"></span><br><span class="line">-V, --version   Output current version of p</span><br><span class="line">-h, --help      Display help information</span><br></pre></td></tr></table></figure>
+<p>实际应用,感觉不是很好用</p>
+<p><img src="../../images/python-p.png" alt="运行"></p>
+
       
     </div>
 
@@ -431,7 +421,7 @@
     <strong>本文作者： </strong>Nick Na</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://naguangqing.com/post/p20180726-2/" title="添加cron定期更新博客">http://naguangqing.com/post/p20180726-2/</a>
+    <a href="http://naguangqing.com/post/p20180808-1/" title="Python版本管理工具 p">http://naguangqing.com/post/p20180808-1/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -444,7 +434,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/经验/" rel="tag"># 经验</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -457,8 +447,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/p20180726-1/" rel="next" title="Blog搭建流程">
-                <i class="fa fa-chevron-left"></i> Blog搭建流程
+              <a href="/post/p20180807-1/" rel="next" title="shell脚本">
+                <i class="fa fa-chevron-left"></i> shell脚本
               </a>
             
           </div>
@@ -466,10 +456,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/p20180730-1/" rel="prev" title="收集一些页面">
-                收集一些页面 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -633,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加脚本"><span class="nav-number">1.</span> <span class="nav-text">添加脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加cron"><span class="nav-number">2.</span> <span class="nav-text">添加cron</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重新启动cron"><span class="nav-number">3.</span> <span class="nav-text">重新启动cron</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看cron-log"><span class="nav-number">4.</span> <span class="nav-text">查看cron log</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li></ol></div>
             
 
           </div>
