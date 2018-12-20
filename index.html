@@ -1,9 +1,167 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test</title>
+    <title>Nick</title>
+    <meta name="description" content="colpick's jQuery RGB, HEX and HSB Color Picker plugin is free, lightweight and customizable">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/colpick.css" type="text/css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/colpick.js"></script>
+    <script src="js/plugin.js"></script>
+    <style type="text/css">
+        html {
+            background-color: #fff;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        td {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+        .checked {
+
+        }
+
+        #picker {
+            float: right;
+            margin: 10px;
+        }
+
+        .re {
+            float: right;
+            margin: 10px;
+            position: relative;
+            min-width: 200px;
+            min-height: 200px;
+        }
+
+        .re::before {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            content: "";
+            background: 0 0;
+            width: 6px;
+            height: 6px;
+            color: #f77702;
+        }
+    </style>
 </head>
 <body>
-<h1><center>Hello, this is test page.</center></h1>
+    <div class="container">
+        <div id="picker"></div>
+        <div class="re"></div>
+        <table id="table">
+            
+        </table>
+        <input type="button" id="submit" value="submit">
+    </div>
+
+    <script type="text/javascript">
+        var base = 6,
+            W = 30,
+            H = 20,
+            bush = '#000';
+
+        var picker = $('#picker').colpick({
+            flat:true,
+            layout:'hex',
+            onSubmit:function(hsb,hex,rgb,el) {
+                console.log(hsb,hex,rgb,el)
+                bush = '#'+hex;
+            }
+        });
+
+        function inittable() {
+            var row = '<tr>';
+            for (i = 0; i < W; i++){
+                row += '<td></td>'
+            }
+            row += '</tr>'
+
+            var html = ''
+            for (i = 0; i < H; i++){
+                html += row
+            }
+            $('table').html(html);
+        }
+        inittable();
+
+        $('table').on('click', 'td', function(e) {
+            var tar = $(e.target);
+            if (tar.hasClass('checked')) {
+                tar.css('background-color', '');
+            } else {
+                tar.css('background-color', bush);
+            }
+            tar.toggleClass('checked');
+        }).on('mouseenter', 'td', function(e) {
+            e.preventDefault();
+            if (e.which == 1) {
+                var tar = $(e.target);
+                if (tar.hasClass('checked')) {
+                    tar.css('background-color', '');
+                } else {
+                    tar.css('background-color', bush);
+                }
+                tar.toggleClass('checked');
+            }
+        });;
+
+        $('#submit').on('click', function() {
+            var all = $('.checked');
+            window.list = [];
+            var minX = 9999;
+            var minY = 9999;
+            $.each(all, function(index, elem) {
+                var x = $(elem).index(),
+                    y = $(elem).parent().index()
+                    color = $(elem).css('background-color');
+
+                minX = minX < x? minX: x;
+                minY = minY < y? minY: y;
+
+                list.push({
+                    'x': x,
+                    'y': y,
+                    'color': color
+                })
+            });
+            var points = [];
+                backFlag = false;
+                backElem = null;
+            $.each(list, function(index, el) {
+                el.x = el.x - minX;
+                el.y = el.y - minY;
+
+                var temp = (base * el.x) + 'px ' + (base * el.y) + 'px ' + el.color;
+                points.push(temp);
+                console.log(temp);
+                if (el.x == 0 && el.y == 0) {
+                    backFlag = true;
+                    backElem = el;
+                }
+            });
+
+            var sty = points.join(',') + ';'
+            console.log(sty);
+            $('style').append(".re::before { box-shadow:" + sty + "}");
+            if (backFlag) {
+                $('style').append(".re::before { background-color:" + backElem.color + "}");
+            }
+        });
+    </script>
 </body>
 </html>
