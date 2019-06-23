@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>Vim practice</title>
+    <style type="text/css">
+        .container {
+            width: 800px;
+            min-height: 600px;
+            margin: 50px auto;
+        }
+
+        .panel-default {
+            border-color: #ddd;
+        }
+
+        .panel {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .panel-default>.panel-heading {
+            color: #333;
+            background-color: #f5f5f5;
+            border-color: #ddd;
+        }
+
+        .panel-heading {
+            padding: 10px 15px;
+            border-bottom: 1px solid transparent;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        .panel-body {
+            padding: 15px;
+        }
+
+        .panel-table {
+            margin-top: 200px;
+        }
+
+        .form-group {
+            padding: 8px;
+            margin-bottom: 30px;
+        }
+
+        #userAnswer {
+            font-weight: 900;
+            font-size: 30px;
+        }
+
+        table {
+            width: 100%;
+            border: solid 2px black;
+            border-width: 2px 0 2px 0;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        td {
+            border: none;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div  class="form-group">
+            <input type="checkbox" name="cmd" value="exCommond" checked="checked">ex命令
+            <input type="checkbox" name="cmd" value="writeCommond"  checked="checked">读写命令
+            <input type="checkbox" name="cmd" value="moveCommond"  checked="checked">移动命令
+            <input type="checkbox" name="cmd" value="combinationCommond"  checked="checked">组合命令
+            <input type="checkbox" name="cmd" value="functionCommond"  checked="checked">其他命令
+
+            <button id="start">开始</button>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Vim快捷键练习-答对3次通过,当前答对(<span id="currentNum"></span>)次,剩余(<span id="num"></span>)个未通过
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    描述: <span id="desc"></span>
+                </div>
+                <div class="form-group">
+                    按键: <span id="userAnswer"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default panel-table">
+            <div class="panel-heading">
+                快捷键表
+            </div>
+            <div class="panel-body">
+                <table>
+                    <tr>
+                        <th>文本对象</th>
+                        <th>更改</th>
+                        <th>删除</th>
+                        <th>复制</th>
+                    </tr>
+                    <tr>
+                        <td>一个单词，不包括标点符号</td>
+                        <td>cw</td>
+                        <td>dw</td>
+                        <td>yw</td>
+                    </tr>
+                    <tr>
+                        <td>两个单词，包括标点符号</td>
+                        <td>2cW或c2W</td>
+                        <td>2dW或d2W</td>
+                        <td>2yW或y2W</td>
+                    </tr>
+                    <tr>
+                        <td>后退三个单词</td>
+                        <td>3cb或c3b</td>
+                        <td>3db或d3b</td>
+                        <td>3yb或y3b</td>
+                    </tr>
+                    <tr>
+                        <td>一整行</td>
+                        <td>cc</td>
+                        <td>dd</td>
+                        <td>yy或Y</td>
+                    </tr>
+                    <tr>
+                        <td>到一行的结尾</td>
+                        <td>c$或C</td>
+                        <td>d$或D</td>
+                        <td>y$</td>
+                    </tr>
+                    <tr>
+                        <td>到一行开头</td>
+                        <td>c0</td>
+                        <td>d0</td>
+                        <td>y0</td>
+                    </tr>
+                    <tr>
+                        <td>单个字符</td>
+                        <td>r</td>
+                        <td>x或X</td>
+                        <td>yl或yh</td>
+                    </tr>
+                    <tr>
+                        <td>五个字符</td>
+                        <td>5s</td>
+                        <td>5x</td>
+                        <td>5yl</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <th>移动</th>
+                        <th>命令</th>
+                    </tr>
+                    <tr>
+                        <td>←， ↓，↑，→</td>
+                        <td>h,j,k,l</td>
+                    </tr>
+                    <tr>
+                        <td>到下一行的第一个字符</td>
+                        <td>+</td>
+                    </tr>
+                    <tr>
+                        <td>到上一行的第一个字符</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>到单词的结尾</td>
+                        <td>e或E</td>
+                    </tr>
+                    <tr>
+                        <td>往前一个单词</td>
+                        <td>w或W</td>
+                    </tr>
+                    <tr>
+                        <td>往后一个单词</td>
+                        <td>b或B</td>
+                    </tr>
+                    <tr>
+                        <td>到一行的结尾</td>
+                        <td>$</td>
+                    </tr>
+                    <tr>
+                        <td>到一行的开头</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <th>操作</th>
+                        <th>命令</th>
+                    </tr>
+                    <tr>
+                        <td>往缓冲区放置文本</td>
+                        <td>P或p</td>
+                    </tr>
+                    <tr>
+                        <td>打开vi，如果指定文件则打开文件</td>
+                        <td>vi file</td>
+                    </tr>
+                    <tr>
+                        <td>保存编辑结果，并离开文件</td>
+                        <td>ZZ</td>
+                    </tr>
+                    <tr>
+                        <td>不保存编辑结果，并离开文件</td>
+                        <td>:q!</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <th>编辑动作</th>
+                        <th>命令</th>
+                    </tr>
+                    <tr>
+                        <td>在光标所在位置插入文本</td>
+                        <td>i</td>
+                    </tr>
+                    <tr>
+                        <td>在一行的开头插入文本</td>
+                        <td>I</td>
+                    </tr>
+                    <tr>
+                        <td>在光标所在位置附加文本</td>
+                        <td>a</td>
+                    </tr>
+                    <tr>
+                        <td>在一行的最后附加文本</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>在光标的下一行打开新行</td>
+                        <td>o</td>
+                    </tr>
+                    <tr>
+                        <td>在光标的上一行打开新行</td>
+                        <td>O</td>
+                    </tr>
+                    <tr>
+                        <td>删除一行并替换文本</td>
+                        <td>S</td>
+                    </tr>
+                    <tr>
+                        <td>用新文本覆盖现有文本</td>
+                        <td>R</td>
+                    </tr>
+                    <tr>
+                        <td>合并当前这一行和下一行</td>
+                        <td>J</td>
+                    </tr>
+                    <tr>
+                        <td>切换当前字符的大小写</td>
+                        <td>~</td>
+                    </tr>
+                    <tr>
+                        <td>重复上一个动作</td>
+                        <td>.</td>
+                    </tr>
+                    <tr>
+                        <td>撤销上一个动作</td>
+                        <td>u</td>
+                    </tr>
+                    <tr>
+                        <td>将整行恢复到原来的状态</td>
+                        <td>U</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <th>移动</th>
+                        <th>命令</th>
+                    </tr>
+                    <tr>
+                        <td>往前滚动一整屏</td>
+                        <td>Ctrl f</td>
+                    </tr>
+                    <tr>
+                        <td>往后滚动一整屏</td>
+                        <td>Ctrl b</td>
+                    </tr>
+                    <tr>
+                        <td>往前移动半屏</td>
+                        <td>Ctrl d</td>
+                    </tr>
+                    <tr>
+                        <td>往后移动半屏</td>
+                        <td>Ctrl u</td>
+                    </tr>
+                    <tr>
+                        <td>往前滚动一行</td>
+                        <td>Ctrl e</td>
+                    </tr>
+                    <tr>
+                        <td>往后滚动一行</td>
+                        <td>Ctrl y</td>
+                    </tr>
+                    <tr>
+                        <td>将当前行移到屏幕顶端并滚动屏幕</td>
+                        <td>z ENTER</td>
+                    </tr>
+                    <tr>
+                        <td>将当前行移到屏幕中心并滚动屏幕</td>
+                        <td>z .</td>
+                    </tr>
+                    <tr>
+                        <td>将当前行移到屏幕底端并滚动屏幕</td>
+                        <td>z-</td>
+                    </tr>
+                    <tr>
+                        <td>重画屏幕</td>
+                        <td>Ctrl l</td>
+                    </tr>
+                    <tr>
+                        <td>移到home位置(屏幕顶端)</td>
+                        <td>H</td>
+                    </tr>
+                    <tr>
+                        <td>移到屏幕中间一行</td>
+                        <td>M</td>
+                    </tr>
+                    <tr>
+                        <td>移到屏幕的底端</td>
+                        <td>L</td>
+                    </tr>
+                    <tr>
+                        <td>移到下一行的第一个字符</td>
+                        <td>+</td>
+                    </tr>
+                    <tr>
+                        <td>移到上一行的第一个字符</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>移到当前行的第一个非空格字符</td>
+                        <td>^</td>
+                    </tr>
+                    <tr>
+                        <td>移到当前行的第n个字符</td>
+                        <td>n|</td>
+                    </tr>
+                    <tr>
+                        <td>移到单词的结尾</td>
+                        <td>e</td>
+                    </tr>
+                    <tr>
+                        <td>移到单词的结尾(忽略标点符号)</td>
+                        <td>E</td>
+                    </tr>
+                    <tr>
+                        <td>移到当前句子开头</td>
+                        <td>(</td>
+                    </tr>
+                    <tr>
+                        <td>移到当前句子结束</td>
+                        <td>)</td>
+                    </tr>
+                    <tr>
+                        <td>移动到当前这一段的开头</td>
+                        <td>{</td>
+                    </tr>
+                    <tr>
+                        <td>移动到当前这一段的结尾</td>
+                        <td>}</td>
+                    </tr>
+                    <tr>
+                        <td>移动到这一节开头</td>
+                        <td>[[</td>
+                    </tr>
+                    <tr>
+                        <td>移动到这一节结束</td>
+                        <td>]]</td>
+                    </tr>
+                    <tr>
+                        <td>往同一个方向搜索</td>
+                        <td>n</td>
+                    </tr>
+                    <tr>
+                        <td>往相反方向重复搜索</td>
+                        <td>N</td>
+                    </tr>
+                    <tr>
+                        <td>往前重复搜索</td>
+                        <td>/</td>
+                    </tr>
+                    <tr>
+                        <td>往后重复搜索</td>
+                        <td>?</td>
+                    </tr>
+                    <tr>
+                        <td>搜索当前行中下一个出现x的地方</td>
+                        <td>fx</td>
+                    </tr>
+                    <tr>
+                        <td>搜索当前行中上一个出现x的地方</td>
+                        <td>Fx</td>
+                    </tr>
+                    <tr>
+                        <td>搜索当前行中上一个出现x的地方的前一个字符</td>
+                        <td>tx</td>
+                    </tr>
+                    <tr>
+                        <td>搜索当前行中下一个出现x的地方的后一个字符</td>
+                        <td>Tx</td>
+                    </tr>
+                    <tr>
+                        <td>重复上一个搜索命令,方向相反</td>
+                        <td>;</td>
+                    </tr>
+                    <tr>
+                        <td>重复上一个搜索命令,反向相同</td>
+                        <td>,</td>
+                    </tr>
+                    <tr>
+                        <td>转到第n行</td>
+                        <td>nG</td>
+                    </tr>
+                    <tr>
+                        <td>转到文件尾</td>
+                        <td>G</td>
+                    </tr>
+                    <tr>
+                        <td>回到上一个记号或上下文</td>
+                        <td>··</td>
+                    </tr>
+                    <tr>
+                        <td>回到包含上一个记号的行的开头</td>
+                        <td>''</td>
+                    </tr>
+                    <tr>
+                        <td>显示当前的行号(不是移动命令)</td>
+                        <td>^G</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var config = {
+            time: 1500,
+            passTime: 3,
+        };
+
+        Array.prototype.remove = function(index) {
+            if(isNaN(index) || index >= this.length){
+                return false;
+            }
+
+            for(var i = index; i < this.length - 1; i++) {
+                this[i] = this[i + 1]
+            }
+
+            this.length-=1;
+        };
+
+        String.prototype.trim = function() {
+            return this.replace(/(^\s*)|(\s*$)/g, '');
+        }
+
+        var command = {};
+        command.exCommond = [
+            {
+                keys: [':', 'w'],
+                desc: 'writeNoteLeave'
+            },
+            {
+                keys: [':', 'w', '!', ' ', 'f', 'i', 'l', 'e'],
+                desc: 'writeCoverFile'
+            },
+            {
+                keys: [':', 'w', ' ', 'n', 'e', 'w', 'F', 'i', 'l', 'e'],
+                desc: 'writeToNewFile'
+            },
+
+            {
+                keys: [':', 'e', '!'],
+                desc: 'exitChange'
+            },
+            {
+                keys: [':', 'q'],
+                desc: 'quitEditingSession'
+            },
+            {
+                keys: [':', 'q', '!'],
+                desc: 'quitEditingSessionWhithoutSave'
+            },
+            {
+                keys: [':', 's', 'e', 't', ' ', 'w', 'm', '=', '1', '0'],
+                desc: 'setWrapmargin'
+            },
+            {
+                keys: [':', 's', 'e', 't', ' ', 'n', 'u'],
+                desc: 'setLineNum'
+            }
+        ];
+
+        command.writeCommond = [
+            {
+                keys: ['i'],
+                desc: 'insert'
+            },
+            {
+                keys: ['a'],
+                desc: 'append'
+            },
+            {
+                keys: ['A'],
+                desc: 'appendAtLineEnd'
+            },
+            {
+                keys: ['I'],
+                desc: 'appendAtLineStart'
+            },
+
+            {
+                keys: ['d'],
+                desc: 'deleteCommand'
+            },
+            {
+                keys: ['D'],
+                desc: 'deleteOneLineFromCursorToEnd'
+            },
+            {
+                keys: ['d', 'w'],
+                desc: 'deleteWord'
+            },
+            {
+                keys: ['d', 'b'],
+                desc: 'deleteBeforeWord'
+            },
+            {
+                keys: ['d', '0'],
+                desc: 'deleteLineFormCursorToStart'
+            },
+            {
+                keys: ['d', '$'],
+                desc: 'deleteLineFormCursorToEnd'
+            },
+            {
+                keys: ['d', 'd'],
+                desc: 'deleteOneLineFromStartToEnd'
+            },
+
+            {
+                keys: ['c'],
+                desc: 'changeCommand'
+            },
+            {
+                keys: ['c', 'w'],
+                desc: 'changeWord'
+            },
+            {
+                keys: ['c', 'c'],
+                desc: 'changeThisLineClear'
+            },
+
+            {
+                keys: ['x'],
+                desc: 'deleteOneCharacterCursor'
+            },
+            {
+                keys: ['X'],
+                desc: 'deleteOneCharacterBeforeCursor'
+            },
+
+            {
+                keys: ['y'],
+                desc: 'dragCommand'
+            },
+
+            {
+                keys: ['r'],
+                desc: 'changeCursorOneCharacter'
+            },
+            {
+                keys: ['S'],
+                desc: 'changeOneLineFromStartToEnd'
+            },
+            {
+                keys: ['C'],
+                desc: 'changeOneLineFormCursorToEnd'
+            },
+            {
+                keys: ['u'],
+                desc: 'revokeLastCommand'
+            },
+            {
+                keys: ['U'],
+                desc: 'revokeLine'
+            },
+            {
+                keys: ['.'],
+                desc: 'repeat'
+            },
+            {
+                keys: ['o'],
+                desc: 'openNewLineAfterCursorLine'
+            },
+            {
+                keys: ['O'],
+                desc: 'openNewLineBeforeCursorLine'
+            },
+            {
+                keys: ['s'],
+                desc: 'deleteCharacterAtCursorAndReplace'
+            },
+            {
+                keys: ['S'],
+                desc: 'deleteAllLineAndReplace'
+            },
+            {
+                keys: ['R'],
+                desc: 'replaceCharcterUserNewChar'
+            },
+            {
+                keys: ['5', '0', 'i', '*', ' Escape'],
+                desc: 'insert50*'
+            },
+            {
+                keys: ['2', 'r', 'B'],
+                desc: 'replaceAAUseBB'
+            },
+            {
+                keys: ['J'],
+                desc: 'mergeCurrentLineAndNextLine'
+            }
+        ];
+
+        command.functionCommond = [
+            {
+                keys: ['Escape'],
+                desc: 'enterCmdMode'
+            },
+            {
+                keys: ['Z', 'Z'],
+                desc: 'saveAndExitEdit'
+            },
+            {
+                keys: ['Control ', 'l'],
+                desc: 'reDrawScreen'
+            },
+
+            {
+                keys: ['/'],
+                desc: 'searchForward'
+            },
+            {
+                keys: ['?'],
+                desc: 'searchBackward'
+            },
+            {
+                keys: ['n'],
+                desc: 'repeatLastSearchCmd'
+            },
+            {
+                keys: ['N'],
+                desc: 'reverseRepeatLastSearchCmd'
+            },
+            {
+                keys: ['f', 'x'],
+                desc: 'searchNextX'
+            },
+            {
+                keys: ['F', 'x'],
+                desc: 'searchBeforex'
+            },
+            {
+                keys: ['t', 'x'],
+                desc: 'searchNextxBefore'
+            },
+            {
+                keys: ['T', 'x'],
+                desc: 'searchNextxAfter'
+            },
+            {
+                keys: [';'],
+                desc: 'repeatLastSearchSameDirection'
+            },
+            {
+                keys: [','],
+                desc: 'repeatLastSearchDiffDirection'
+            },
+            {
+                keys: ['Control ', 'g'],
+                desc: 'showCurrentLineNum'
+            }
+        ];
+
+        command.moveCommond = [
+            {
+                keys: ['h'],
+                desc: 'moveLeftOneCharacter'
+            },
+            {
+                keys: ['j'],
+                desc: 'moveDownOneCharacter'
+            },
+            {
+                keys: ['k'],
+                desc: 'moveUpOneCharacter'
+            },
+            {
+                keys: ['l'],
+                desc: 'moveRightOneCharacter'
+            },
+            {
+                keys: ['4', 'l'],
+                desc: 'moveRightFourCharacter'
+            },
+            {
+                keys: ['0'],
+                desc: 'moveToLineStart'
+            },
+            {
+                keys: ['$'],
+                desc: 'moveToLineEnd'
+            },
+            {
+                keys: ['w'],
+                desc: 'moveToNextWordIncludePunctuation'
+            },
+            {
+                keys: ['W'],
+                desc: 'moveToNextWordSkipPunctuation'
+            },
+            {
+                keys: ['b'],
+                desc: 'moveToBeforeWordIncludePunctuation'
+            },
+            {
+                keys: ['B'],
+                desc: 'moveToBeforeWordSkipPunctuation'
+            },
+            {
+                keys: ['5', 'B'],
+                desc: 'moveToBeoreFiveWordSkipPuncation'
+            },
+            {
+                keys: ['G'],
+                desc: 'moveToFileTop'
+            },
+            {
+                keys: ['4', 'G'],
+                desc: 'moveToLineFour'
+            },
+            {
+                keys: ['e'],
+                desc: 'moveToWordEnd'
+            },
+            {
+                keys: ['E'],
+                desc: 'moveToWordEndIgnoreSkipPunctuation'
+            },
+            {
+                keys: ['('],
+                desc: 'moveToSentenceStart'
+            },
+            {
+                keys: [')'],
+                desc: 'moveToSentenceEnd'
+            },
+            {
+                keys: ['{'],
+                desc: 'moveToParagraphStart'
+            },
+            {
+                keys: ['}'],
+                desc: 'moveToParagraphEnd'
+            },
+            {
+                keys: ['[', '['],
+                desc: 'moveToSectionStart'
+            },
+            {
+                keys: [']', ']'],
+                desc: 'moveToSectionEnd'
+            },
+            {
+                keys: ['H'],
+                desc: 'moveToScreenTopLine'
+            },
+            {
+                keys: ['M'],
+                desc: 'moveToScreenMidLine'
+            },
+            {
+                keys: ['L'],
+                desc: 'moveToScreenBottomLine'
+            },
+            {
+                keys: ['5', 'H'],
+                desc: 'moveToScreenTopNLine'
+            },
+            {
+                keys: ['5', 'L'],
+                desc: 'moveToScreenBottomNLine'
+            },
+            {
+                keys: ['+'],
+                desc: 'moveToNextLineStart'
+            },
+            {
+                keys: ['-'],
+                desc: 'moveToBeforeLineStart'
+            },
+            {
+                keys: ['z', ' Enter'],
+                desc: 'moveCursorToScreenTopAndMoveScreen'
+            },
+            {
+                keys: ['z', '.'],
+                desc: 'moveCursorToScreenCenterAndMoveScreen'
+            },
+            {
+                keys: ['z', '-'],
+                desc: 'moveCursorToScreenBottomAndMoveScreen'
+            },
+            {
+                keys: ['Control ', 'f'],
+                desc: 'forwardOndScreen'
+            },
+            {
+                keys: ['Control ', 'b'],
+                desc: 'backwardOndScreen'
+            },
+            {
+                keys: ['Control ', 'd'],
+                desc: 'downHalfScreen'
+            },
+            {
+                keys: ['Control ', 'u'],
+                desc: 'upHalfScreen'
+            },
+            {
+                keys: ['Control ', 'e'],
+                desc: 'upOneLine'
+            },
+            {
+                keys: ['Control ', 'y'],
+                desc: 'dowmOneLine'
+            }
+        ];
+
+        command.combinationCommond = [
+            {
+                keys: ['d', 'f', 'x'],
+                desc: 'deleteToNextX'
+            },
+            {
+                keys: ['"', '2', 'p'],
+                desc: 'revertNextToLastDelete'
+            },
+            {
+                keys: ['"', 'd', 'y', 'y'],
+                desc: 'dragThisLineToBufferD'
+            },
+            {
+                keys: ['"', 'a', '7', 'y', 'y'],
+                desc: 'dragNextSevenLinesToBufferA'
+            },
+            {
+                keys: ['"', 'd', 'P'],
+                desc: 'putBufferDBeforeCursor'
+            },
+            {
+                keys: ['"', 'a', 'p'],
+                desc: 'putBufferAAfterCursor'
+            },
+            {
+                keys: ['"', 'a', '5', 'd', 'd'],
+                desc: 'putDeleteFiveLineToBufferA'
+            },
+            {
+                keys: ['"', 'z', 'd', ')'],
+                desc: 'deleteCursorToSentencePutBufferZ'
+            },
+            {
+                keys: ['"', 'Z', 'y', ')'],
+                desc: 'appendNextSentenceToBufferZ'
+            },
+            {
+                keys: ['m', 'x'],
+                desc: 'markX'
+            },
+            {
+                keys: ['\'', 'x'],
+                desc: 'moveToMarkXLine'
+            },
+            {
+                keys: ['`', 'x'],
+                desc: 'moveToMarkX'
+            },
+            {
+                keys: ['`', '`'],
+                desc: 'moveBack'
+            },
+            {
+                keys: ['\'', '\''],
+                desc: 'moveLastMarkOrLine'
+            }
+        ];
+
+        var keyArr = [],
+
+            desc_zh = {
+                'writeNoteLeave': '[ex] 保存写入但不离开',
+                'writeCoverFile' : '[ex] 写入并覆盖文件file',
+                'writeToNewFile': '[ex] 写入新的文件newFile',
+                'exitChange': '[ex] 恢复上次存储的文件内容',
+                'quitEditingSession': '[ex] 退出编辑会话',
+                'quitEditingSessionWhithoutSave': '[ex] 退出编辑会话，不保存修改',
+                'setWrapmargin': '[ex] 设置wrapmargin为10',
+                'setLineNum': '[ex] 设置行编号',
+
+                'insert': '在光标前插入',
+                'append': '在光标后插入',
+                'appendAtLineEnd': '在一行行尾添加',
+                'appendAtLineStart': '在一行开头添加',
+                'insert50*': '插入50个*',
+
+                'deleteCommand': '[删除] 删除命令',
+                'deleteWord': '[删除]删除一个词',
+                'deleteOneLineFromStartToEnd': '[删除] 删除一行，从开始到结束',
+                'deleteBeforeWord': '[删除] 向前删除一个单词',
+                'deleteLineFormCursorToEnd': '[删除] 删除光标到结尾',
+                'deleteLineFormCursorToStart': '[删除] 删除光标到开头',
+
+                'deleteOneLineFromCursorToEnd': '删除一行，从光标到结束 (单个字符命令)',
+                'deleteOneCharacterCursor': '删除光标所在位置的一个字符',
+                'deleteOneCharacterBeforeCursor': '删除光标前的一个字符',
+
+                'changeCommand': '[更改] 更改命令',
+                'changeWord': '[更改] 修改一个单词',
+                'changeThisLineClear': '[更改] 替换整行文本，清空并输入',
+
+                'changeOneLineFromStartToEnd': '更改一行内容, 行开始到结束 (单个字符命令)',
+                'changeOneLineFormCursorToEnd': '更改一行内容, 从光标到结束 (单个字符命令)',
+
+                'changeCursorOneCharacter': '更改光标所在位置的一个字符',
+                'replaceCharcterUserNewChar': '更改光标所在位置的多个字符',
+                'replaceAAUseBB': '用BB替换AA',
+
+                'deleteCharacterAtCursorAndReplace': '删除光标所在位置的一个字符后再替换文本',
+                'deleteAllLineAndReplace': '删除一整行后再替换文本 (单个字符命令)',
+
+                'openNewLineBeforeCursorLine': '在光标所在位置的上一行打开一个新行',
+                'openNewLineAfterCursorLine': '在光标所在位置的下一行打开一个新行',
+
+                'dragCommand': '拖拽命令',
+                'revokeLastCommand': '撤销上一条命令',
+                'revokeLine': '撤销对行的改动',
+                'repeat': '重复上次操作',
+                'mergeCurrentLineAndNextLine': '合并当前行和下一行',
+
+                'enterCmdMode': '进入命令行模式',
+                'saveAndExitEdit': '退出并保存修改',
+                'forwardOndScreen': '往前滚动一屏',
+                'backwardOndScreen': '往后滚动一屏',
+                'downHalfScreen': '往前(下)滚动半屏',
+                'upHalfScreen': '往后(上)滚动半屏',
+                'upOneLine': '往上滚动一行',
+                'dowmOneLine': '往下滚动一行',
+                'moveCursorToScreenTopAndMoveScreen': '将光标移动到屏幕顶端并移动屏幕',
+                'moveCursorToScreenCenterAndMoveScreen': '将光标动到屏幕中心并滚动屏幕',
+                'moveCursorToScreenBottomAndMoveScreen': '将光标移动到屏幕底端并滚动屏幕',
+                'reDrawScreen': '重画屏幕',
+                'moveToScreenTopLine': '移动到屏幕的顶端的行',
+                'moveToScreenMidLine': '移动到屏幕的中央的行',
+                'moveToScreenBottomLine': '移动到屏幕的底端的行',
+                'moveToScreenTopNLine': '移动到屏幕顶端往下的第5行',
+                'moveToScreenBottomNLine': '移动到屏幕底端往上的第5行',
+                'moveToNextLineStart': '移动到下一行的第一个字符',
+                'moveToBeforeLineStart': '移动到上一行的第一个字符',
+                'moveToWordEnd': '移动到单词结尾',
+                'moveToWordEndIgnoreSkipPunctuation': '移动到单词结尾，忽略标点符号',
+                'moveToSentenceStart': '移动到句子的开头',
+                'moveToSentenceEnd': '移动到句子的结束',
+                'moveToParagraphStart': '移动到段落的开头',
+                'moveToParagraphEnd': '移动到段落的结束',
+                'moveToSectionStart': '移动到节的开头',
+                'moveToSectionEnd': '移动到节的结束',
+                'searchForward': '往前正则搜索模式',
+                'searchBackward': '往后正则搜索模式',
+                'repeatLastSearchCmd': '同向重复上一个正则搜索',
+                'reverseRepeatLastSearchCmd': '反向重复上一个正则搜索',
+                'searchNextX': '搜索下一个出现x字符的地方',
+                'searchBeforex': '搜索上一个x出现的地方',
+                'searchNextxBefore': '搜索下一个出现x字符的地方的前一个字符',
+                'searchNextxAfter': '搜索上一个出现x字符的地方的后一个字符',
+                'repeatLastSearchSameDirection': '重复上一个搜索命令,方向相同',
+                'repeatLastSearchDiffDirection': '重复上一个搜索命令,方向相反',
+                'deleteToNextX': '删除到下一个字符x为止的所有文本',
+                'showCurrentLineNum': '显示当前的行号，文件总行数，及当前位置的百分比',
+
+                'moveLeftOneCharacter': '向左移动一个字符',
+                'moveDownOneCharacter': '向下移动一个字符',
+                'moveUpOneCharacter': '向上移动一个字符',
+                'moveRightOneCharacter': '向右移动一个字符',
+                'moveRightFourCharacter': '向右移动四个字符',
+                'moveToLineStart': '移动到一行的开头',
+                'moveToLineEnd': '移动到一行的结束',
+                'moveToNextWordIncludePunctuation': '移动到下一个词或标点',
+                'moveToNextWordSkipPunctuation': '移动到下一个词忽略标点',
+                'moveToBeforeWordIncludePunctuation': '移动到上一个单词或标点',
+                'moveToBeforeWordSkipPunctuation': '移动到上一个单词忽略标点',
+                'moveToBeoreFiveWordSkipPuncation': '移动到前5个单词忽略标点',
+                'moveToFileTop': '移动到文件结尾行',
+                'moveToLineFour': '移动到第四行',
+
+                'revertNextToLastDelete': '放置命令，恢复倒数第二次的删除',
+                'dragThisLineToBufferD': '将当前行拖拽到缓冲区d中',
+                'dragNextSevenLinesToBufferA': '将后续7行拖拽到缓冲区a中',
+                'putBufferDBeforeCursor': '将缓冲区d的内容放置在光标前',
+                'putBufferAAfterCursor': '将缓冲区a的内容放置在光标后',
+                'putDeleteFiveLineToBufferA': '将删除的5行保留在缓冲区a中',
+                'deleteCursorToSentencePutBufferZ': '删除光标处开始的所在句子结尾内容，并放到缓冲区z中',
+                'appendNextSentenceToBufferZ': '下一句话追加到缓冲区z',
+                'markX': '将当前位置标记成x',
+                'moveToMarkXLine': '将光标移动到x标记的所在行第一个字符',
+                'moveToMarkX': '将光标移动到x标记的字符',
+                'moveBack': '移动位置后回到上一个标记或上下文的确切位置',
+                'moveLastMarkOrLine': '回到上一个标记或上下文所在的行的开头',
+            },
+
+            passTime = [];
+
+        keyArr = keyArr
+            .concat(command.exCommond)
+            .concat(command.writeCommond)
+            .concat(command.functionCommond)
+            .concat(command.moveCommond)
+            .concat(command.combination);
+
+        for (var i = 0; i <= keyArr.length - 1; i++) {
+            passTime.push(config.passTime);
+        }
+
+
+        /*
+         * Save down keys
+         */
+        var downKey = function() {
+            this.keys = [];
+            this.keyString = '';
+        };
+
+        downKey.prototype = {
+            addKey: function(event) {
+                this.keys.push(event.key);
+                this.keyString += event.key;
+            },
+            length: function() {
+                return this.keys.length;
+            },
+            getKeyString: function() {
+                return this.keyString;
+            }
+        };
+
+        // current down keys
+        var currentKeys;
+
+        /*
+         * generate Test
+         */
+        var GetRandomNum = function(Min, Max) {
+            var Range = Max - Min,
+                Rand = Math.random();    // 0-1
+            return(Min + Math.round(Rand * Range));
+        }
+
+        var testing = false,
+            testId,
+            desc = desc_zh,
+            currentTest,
+
+            startBtn = document.getElementById('start'),
+            cmdInputs = document.getElementsByName('cmd'),
+            descBlock = document.getElementById('desc'),
+            userAnswerBlock = document.getElementById('userAnswer'),
+            currentNum = document.getElementById('currentNum'),
+            num = document.getElementById('num');
+
+        var generateTest = function() {
+            console.log(passTime);
+            if (keyArr.length == 0) {
+                console.info("Pass Test");
+                alert("Pass Test");
+                return;
+            }
+            testId = GetRandomNum(0, keyArr.length - 1);
+            desc = desc_zh;
+            currentTest = keyArr[testId];
+            descBlock.innerText = desc[currentTest.desc];
+            userAnswerBlock.style.color = 'black';
+            userAnswerBlock.innerText = '';
+            currentNum.innerText = config.passTime - passTime[testId];
+            num.innerText = passTime.length;
+
+            testing = true;
+        };
+
+        var initCmdInputs = function () {
+            var clickCallback = function() {
+                var cmds = [];
+                for(k in cmdInputs){
+                    if(cmdInputs[k].checked) {
+                        cmds.push(cmdInputs[k].value);
+                    }
+                }
+                if (cmds.length < 1) {
+                    return false;
+                }
+            }
+            for (var i = 0; i <= cmdInputs.length - 1; i++) {
+                cmdInputs[i].onclick = clickCallback;
+            }
+        }
+        initCmdInputs();
+
+        startBtn.onclick = function () {
+            keyArr = [];
+            passTime = [];
+
+            var cmds = [];
+            for(k in cmdInputs){
+                if(cmdInputs[k].checked) {
+                    cmds.push(cmdInputs[k].value);
+                    keyArr = keyArr.concat(command[cmdInputs[k].value]);
+                }
+            }
+
+            for (var i = 0; i <= keyArr.length - 1; i++) {
+                passTime.push(config.passTime);
+            }
+            generateTest();
+        };
+
+        generateTest();
+
+        var inputErrorCall = function() {
+            passTime[testId]++;
+            testing = false;
+            userAnswerBlock.innerText = currentTest.keys.join('');
+            userAnswerBlock.style.color = 'red';
+            currentKeys = null;
+            setTimeout(generateTest, config.time);
+        };
+
+        var inputSuccessCall = function() {
+            passTime[testId]--;
+            currentNum.innerText = config.passTime - passTime[testId];
+            if (passTime[testId] <= 0) {
+                keyArr.remove(testId);
+                passTime.remove(testId);
+            }
+            num.innerText = passTime.length;
+
+            testing = false;
+            userAnswerBlock.innerText = currentTest.keys.join('');
+            userAnswerBlock.style.color = 'green';
+            currentKeys = null;
+            setTimeout(generateTest, config.time);
+        };
+
+        var exceptKey = [
+            'Meta',
+            'Shift',
+            // 'Control',
+            'Alt',
+            'F5',
+            'F12',
+        ];
+
+        document.onkeydown = function(e) {
+            console.log(e);
+            if (!testing || exceptKey.indexOf(e.key) != -1) {
+                return;
+            }
+
+            // keys had input
+            if (!currentKeys) {
+                currentKeys = new downKey();
+            }
+            currentKeys.addKey(e);
+
+            var keys = currentTest.keys,
+                index = currentKeys.length() - 1,
+                key = keys[index];
+
+            if (e.key != keys[index].trim() && e.key != keys[index]) {
+                console.info("Input Error");
+                inputErrorCall();
+                return false;
+            }
+
+            userAnswerBlock.innerText = currentKeys.getKeyString();
+
+            if (keys.length == currentKeys.length()) {
+                console.info("success");
+                inputSuccessCall();
+            }
+
+            return false;
+        }
+    </script>
+</body>
+</html>
