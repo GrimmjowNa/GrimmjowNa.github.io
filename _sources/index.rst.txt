@@ -10,6 +10,8 @@ Welcome to Nick's pages!
    :maxdepth: 2
    :caption: Contents:
 
+   article/demo/hello
 
 * :ref:`genindex`
 * :ref:`search`
+* :ref:`article/demo/hello`
