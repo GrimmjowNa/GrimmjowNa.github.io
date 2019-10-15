@@ -14,4 +14,3 @@ Welcome to Nick's pages!
 
 * :ref:`genindex`
 * :ref:`search`
-* :ref:`article/demo/hello`
