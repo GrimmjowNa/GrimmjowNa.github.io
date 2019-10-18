@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>Hello World! &#8212; Bolg  文档</title>
+    <title>Docker运行minDoc &#8212; Bolg  文档</title>
     <link rel="stylesheet" href="../../static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
@@ -16,8 +16,7 @@
     <link rel="shortcut icon" href="../../static/favicon.png"/>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="Docker运行minDoc" href="../docker/mindoc.html" />
-    <link rel="prev" title="Welcome to Nick’s pages!" href="../../index.html" />
+    <link rel="prev" title="Hello World!" href="../demo/hello.html" />
    
   <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
   
@@ -34,9 +33,20 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="hello-world">
-<h1>Hello World!<a class="headerlink" href="#hello-world" title="永久链接至标题">¶</a></h1>
-<p>this is hello world page!</p>
+  <div class="section" id="dockermindoc">
+<h1>Docker运行minDoc<a class="headerlink" href="#dockermindoc" title="永久链接至标题">¶</a></h1>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker run -p <span class="m">8181</span>:8181 --name<span class="o">=</span>mindoc --restart<span class="o">=</span>always <span class="se">\</span>
+    -v <span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/uploads:/mindoc/uploads <span class="se">\</span>
+    -v <span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/database:/data/database <span class="se">\</span>
+    -e <span class="nv">MINDOC_DB_ADAPTER</span><span class="o">=</span>sqlite3 <span class="se">\</span>
+    -e <span class="nv">MINDOC_DB_DATABASE</span><span class="o">=</span>/data/database/mindoc.db <span class="se">\</span>
+    -e <span class="nv">MINDOC_CACHE</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    -e <span class="nv">MINDOC_CACHE_PROVIDER</span><span class="o">=</span>file <span class="se">\</span>
+    -e <span class="nv">MINDOC_ENABLE_EXPORT</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    -e <span class="nv">MINDOC_BASE_URL</span><span class="o">=</span>http://local.mindoc.cn:8181 <span class="se">\</span>
+    -d registry.cn-hangzhou.aliyuncs.com/mindoc/mindoc:v0.13
+</pre></div>
+</div>
 </div>
 
 
@@ -61,16 +71,15 @@
 <h3>导航</h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Hello World!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docker/mindoc.html">Docker运行minDoc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demo/hello.html">Hello World!</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker运行minDoc</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../../index.html" title="上一章">Welcome to Nick’s pages!</a></li>
-      <li>Next: <a href="../docker/mindoc.html" title="下一章">Docker运行minDoc</a></li>
+      <li>Previous: <a href="../demo/hello.html" title="上一章">Hello World!</a></li>
   </ul></li>
 </ul>
 </div>
@@ -104,7 +113,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/article/demo/hello.rst.txt"
+      <a href="../../_sources/article/docker/mindoc.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

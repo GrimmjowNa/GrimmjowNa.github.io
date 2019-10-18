@@ -1,0 +1,14 @@
+# Docker运行minDoc
+
+```shell
+docker run -p 8181:8181 --name=mindoc --restart=always \
+    -v "$(pwd)"/uploads:/mindoc/uploads \
+    -v "$(pwd)"/database:/data/database \
+    -e MINDOC_DB_ADAPTER=sqlite3 \
+    -e MINDOC_DB_DATABASE=/data/database/mindoc.db \
+    -e MINDOC_CACHE=true \
+    -e MINDOC_CACHE_PROVIDER=file \
+    -e MINDOC_ENABLE_EXPORT=true \
+    -e MINDOC_BASE_URL=http://local.mindoc.cn:8181 \
+    -d registry.cn-hangzhou.aliyuncs.com/mindoc/mindoc:v0.13
+```
