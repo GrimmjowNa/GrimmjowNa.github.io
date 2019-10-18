@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>2. Docker &#8212; Bolg  文档</title>
+    <title>1. Git &#8212; Bolg  文档</title>
     <link rel="stylesheet" href="../../static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
@@ -16,7 +16,8 @@
     <link rel="shortcut icon" href="../../static/favicon.png"/>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="prev" title="1. Hello World!" href="../demo/hello.html" />
+    <link rel="next" title="2. Docker" href="docker.html" />
+    <link rel="prev" title="Welcome to Nick’s pages!" href="../../index.html" />
    
   <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
   
@@ -33,30 +34,19 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="docker">
-<h1>2. Docker<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h1>
-<div class="section" id="dockermindoc">
-<h2>2.1. Docker运行minDoc<a class="headerlink" href="#dockermindoc" title="永久链接至标题">¶</a></h2>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker run -p <span class="m">8181</span>:8181 --name<span class="o">=</span>mindoc --restart<span class="o">=</span>always <span class="se">\</span>
-    -v <span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/uploads:/mindoc/uploads <span class="se">\</span>
-    -v <span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/database:/data/database <span class="se">\</span>
-    -e <span class="nv">MINDOC_DB_ADAPTER</span><span class="o">=</span>sqlite3 <span class="se">\</span>
-    -e <span class="nv">MINDOC_DB_DATABASE</span><span class="o">=</span>/data/database/mindoc.db <span class="se">\</span>
-    -e <span class="nv">MINDOC_CACHE</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
-    -e <span class="nv">MINDOC_CACHE_PROVIDER</span><span class="o">=</span>file <span class="se">\</span>
-    -e <span class="nv">MINDOC_ENABLE_EXPORT</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
-    -e <span class="nv">MINDOC_BASE_URL</span><span class="o">=</span>http://local.mindoc.cn:8181 <span class="se">\</span>
-    -d registry.cn-hangzhou.aliyuncs.com/mindoc/mindoc:v0.13
+  <div class="section" id="git">
+<h1>1. Git<a class="headerlink" href="#git" title="永久链接至标题">¶</a></h1>
+<p><strong>采用http方式时,记住密码</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git config credential.helper store
 </pre></div>
 </div>
-<p><strong>修改hosts文件</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>    <span class="n">local</span><span class="o">.</span><span class="n">mindoc</span><span class="o">.</span><span class="n">cn</span>
+<p><strong>查看远程地址</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>
 </pre></div>
 </div>
-<p><strong>访问</strong></p>
-<p>http://local.mindoc.cn:8181/</p>
-<p><strong>版本控制</strong></p>
-<p>只需将当前路径下的<code class="docutils literal notranslate"><span class="pre">/uploads</span></code>和<code class="docutils literal notranslate"><span class="pre">/database</span></code>提交到版本库即可</p>
+<p><strong>修改远程地址</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="nb">set</span><span class="o">-</span><span class="n">url</span> <span class="n">origin</span> <span class="n">git</span><span class="o">@***.</span><span class="n">com</span><span class="p">:</span><span class="o">***/***.</span><span class="n">git</span>
+</pre></div>
 </div>
 </div>
 
@@ -82,15 +72,17 @@
 <h3>导航</h3>
 <p class="caption"><span class="caption-text">目录:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../demo/hello.html">1. Hello World!</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Docker</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">2. Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sublime.html">3. Sublime user settings</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../demo/hello.html" title="上一章">1. Hello World!</a></li>
+      <li>Previous: <a href="../../index.html" title="上一章">Welcome to Nick’s pages!</a></li>
+      <li>Next: <a href="docker.html" title="下一章">2. Docker</a></li>
   </ul></li>
 </ul>
 </div>
@@ -124,7 +116,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/article/docker/mindoc.md.txt"
+      <a href="../../_sources/article/tools/git.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

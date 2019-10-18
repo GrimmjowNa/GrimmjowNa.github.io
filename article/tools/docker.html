@@ -16,7 +16,8 @@
     <link rel="shortcut icon" href="../../static/favicon.png"/>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="prev" title="1. Hello World!" href="../demo/hello.html" />
+    <link rel="next" title="3. Sublime user settings" href="sublime.html" />
+    <link rel="prev" title="1. Git" href="git.html" />
    
   <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
   
@@ -58,6 +59,20 @@
 <p><strong>版本控制</strong></p>
 <p>只需将当前路径下的<code class="docutils literal notranslate"><span class="pre">/uploads</span></code>和<code class="docutils literal notranslate"><span class="pre">/database</span></code>提交到版本库即可</p>
 </div>
+<div class="section" id="dockernginx">
+<h2>2.2. Docker运行Nginx<a class="headerlink" href="#dockernginx" title="永久链接至标题">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker run -d -p <span class="m">8088</span>:80 --name website <span class="se">\</span>
+    --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/dist,target<span class="o">=</span>/usr/share/nginx/html <span class="se">\</span>
+    --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/docker/nginx/congf,target<span class="o">=</span>/etc/nginx/conf.d <span class="se">\</span>
+    --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/docker/nginx/log,target<span class="o">=</span>/var/log/nginx <span class="se">\</span>
+    nginx
+</pre></div>
+</div>
+<p><strong>日志查看</strong></p>
+<p>在当前路径下的<code class="docutils literal notranslate"><span class="pre">/docker/nginx/log</span></code>中查看运行日志</p>
+<p><strong>修改配置</strong></p>
+<p>在当前路径下的<code class="docutils literal notranslate"><span class="pre">/docker/nginx/congf</span></code>中修改配置</p>
+</div>
 </div>
 
 
@@ -82,15 +97,17 @@
 <h3>导航</h3>
 <p class="caption"><span class="caption-text">目录:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../demo/hello.html">1. Hello World!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">1. Git</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sublime.html">3. Sublime user settings</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../demo/hello.html" title="上一章">1. Hello World!</a></li>
+      <li>Previous: <a href="git.html" title="上一章">1. Git</a></li>
+      <li>Next: <a href="sublime.html" title="下一章">3. Sublime user settings</a></li>
   </ul></li>
 </ul>
 </div>
@@ -124,7 +141,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/article/docker/mindoc.md.txt"
+      <a href="../../_sources/article/tools/docker.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

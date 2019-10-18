@@ -7,11 +7,14 @@ Welcome to Nick's pages!
 ================================
 
 .. toctree::
+   :numbered:
+   :titlesonly:
    :maxdepth: 2
-   :caption: Contents:
+   :caption: 目录:
 
-   article/demo/hello
-   article/docker/mindoc
+   article/tools/git
+   article/tools/docker
+   article/tools/sublime
 
 * :ref:`genindex`
 * :ref:`search`
