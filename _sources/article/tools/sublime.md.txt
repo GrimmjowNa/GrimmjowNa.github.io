@@ -1,4 +1,6 @@
-# Sublime user settings
+# Sublime
+
+## Sublime user settings
 
 ```json
 {
@@ -23,6 +25,6 @@
 }
 ```
 
-# 插件
+## 插件
 
 - PlainTasks
