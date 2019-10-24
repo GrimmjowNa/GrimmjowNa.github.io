@@ -1,0 +1,72 @@
+Webpack 总览
+================================
+
+## 安装
+
+```shell
+# webpack 核心模块
+# webpack-cli 命令行工具
+npm install webpack webpack-cli --save-dev
+```
+
+## 命令行方式
+
+```shell
+npx webpack --entry=./index.js --output-filename=buindle.js --mode=development
+```
+- npx: 运行非全局安装命令
+- entry: 资源打包的入口, webpack从这里开始进行模块依赖查找, 默认`src/index.js`
+- output: 输出资源名
+- mode: development, production, none
+
+## 使用npm script方式
+
+package.json中添加
+```js
+ "script": {
+    "build": "webpack --entry=./index.js --output-filename=buindle.js --mode=development"
+ }
+```
+script中可以直接运行模块内添加的指令.
+
+## 使用配置文件
+
+- 默认 webpack.config.js
+- `output-filename`配置文件中为分层格式
+- `output-path`为绝对路径
+
+```js
+// webpack.config.js
+var path  = require('path')
+var root = path.resolve(__dirname)
+
+var path  = require('path')
+var root = path.resolve(__dirname)
+
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: path.join(root, 'dist'),
+        filename: 'bundke.js'
+    },
+    mode: 'development'
+}
+
+// package.json
+"script": {
+    "build": "webpack"
+}
+```
+
+## Dev server
+
+```shell
+npm install webpack-dev-server --save-dev
+```
+
+```js
+// webpack.config.js
+    devServer: {
+        publicPath: '/dist'
+    }
+```
