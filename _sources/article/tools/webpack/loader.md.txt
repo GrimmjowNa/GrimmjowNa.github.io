@@ -1,0 +1,82 @@
+Loader
+================================
+
+## 简介
+
+- 每个loader本质是一个函数
+- 一个loader的输入是工程源文件的字符串或者上一个loader的输出
+- loader转化结果为字符串, source map, 以及AST对象
+- 最后一个loader,结果由webpack处理, 否则作为下一个loader的输入向后传递
+
+## 配置
+
+- `module.rules`
+ - `test` 正则表达式 匹配模块
+ - `use`  字符串或者数组, 数组按从后往前的顺序处理
+   - eg: `['style-loader', 'css-loader']`
+ - `exclude`排除
+ - `include`包含
+
+## 常用loader配置
+
+### babel-loader
+
+```shell
+# 安装
+npm install babel-loader @babel/core @babel/preset-env
+```
+
+```js
+// webpack.config.js
+rules: [{
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: {
+        loader: 'babel-loader',
+        options: {
+            cacheDirectory: true,
+            presets: ['@babel/preset-env']
+        }
+    }
+}]
+// .babelrc
+{
+  "presets": [],
+  "plugins": []
+}
+```
+
+**注意**:
+
+- 排除`node_modules`
+- cache默认路径 `node_modules/.cache/babel-loader/`
+- 支持读取配置文件`.babelrc`
+
+####　预设`presets`
+
+presets字段设定转码规则，官方提供以下的规则集，你可以根据需要安装。
+
+参考　[browserslist](https://github.com/browserslist/browserslist)
+
+```
+# ES2015转码规则
+$ npm install --save-dev babel-preset-es2015
+
+# ES7不同阶段语法提案的转码规则（共有4个阶段）
+$ npm install --save-dev babel-preset-stage-0
+$ npm install --save-dev babel-preset-stage-1
+$ npm install --save-dev babel-preset-stage-2
+$ npm install --save-dev babel-preset-stage-3
+
+＃　它可以根据开发者的配置，按需加载插件．　比如　node、浏览器等
+＃　默认加载从es2015开始的所有preset
+npm install --save-dev　babel-preset-env
+```
+
+## ts-loader
+
+参考: [ts-loader](https://github.com/TypeStrong/ts-loader)
+
+```shell
+npm install ts-loader typescript
+```
