@@ -73,7 +73,7 @@ $ npm install --save-dev babel-preset-stage-3
 npm install --save-dev　babel-preset-env
 ```
 
-## ts-loader
+### ts-loader
 
 参考: [ts-loader](https://github.com/TypeStrong/ts-loader)
 
