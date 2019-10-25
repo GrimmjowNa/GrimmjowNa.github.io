@@ -64,9 +64,27 @@ module.exports = {
 npm install webpack-dev-server --save-dev
 ```
 
+通过`--save-dev`安装的依赖,会添加到package.json的`devDependencies`下, 表示只在开发环境中使用
+生产环境通过运行`npm install --production`过滤带哦`devDependencies`中的模块.
+
 ```js
+// package.json
+    "script": {
+        "serve": "webpack-dev-server"
+    }
+
 // webpack.config.js
     devServer: {
         publicPath: '/dist'
     }
 ```
+
+#### 工作原理
+
+- 令webpack进行模块打包, 并处理打包结果的资源请求
+- 作为web服务器, 处理静态资源文件请求
+- 收到浏览器资源请求时, 先进行URL校验
+  - 是资源服务地址, 即`publicPath`配置路径下, 寻找资源并返回给浏览器
+  - 不是资源服务地址, 直接读取硬盘资源文件并返回
+- 打包只是放在内存中, 收到请求返回的是内存中的打包结果
+- live-reloading (自动刷新)
