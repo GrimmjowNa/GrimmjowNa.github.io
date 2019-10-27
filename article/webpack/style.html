@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>样式处理 &#8212; Article  文档</title>
+    <link rel="stylesheet" href="../../static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../static/language_data.js"></script>
+    <script type="text/javascript" src="../../static/translations.js"></script>
+    <link rel="shortcut icon" href="../../static/favicon.png"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>样式处理<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>使用<code class="docutils literal notranslate"><span class="pre">style-loader</span> <span class="pre">&amp;</span> <span class="pre">css</span> <span class="pre">loader</span></code>会在页面上添加<code class="docutils literal notranslate"><span class="pre">style</span></code>标签的方式使样式生效.</p>
+<p>样式生成文件使用<code class="docutils literal notranslate"><span class="pre">extract-text-webpack-plugin</span></code>(webpack&lt;4), <code class="docutils literal notranslate"><span class="pre">mini-css-extract-plugin</span></code>插件</p>
+<div class="section" id="mini-css-extract-plugin">
+<h2>mini-css-extract-plugin<a class="headerlink" href="#mini-css-extract-plugin" title="永久链接至标题">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>npm install --save-dev mini-css-extract-plugin
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>将CSS提取为独立的文件的插件</p></li>
+<li><p>对每个包含css的js文件都会创建一个CSS文件，支持按需加载css和sourceMap</p></li>
+<li><p>使用<code class="docutils literal notranslate"><span class="pre">import()</span></code>导入的js文件中引入的css会单独打包</p></li>
+<li><p>只能用在webpack4中，<code class="docutils literal notranslate"><span class="pre">extract-text-webpack-plugin</span></code>优点:</p>
+<ul>
+<li><p>异步加载</p></li>
+<li><p>不重复编译，性能更好</p></li>
+<li><p>更容易使用</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">MiniCssExtractPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mini-css-extract-plugin&#39;</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.css$/</span><span class="p">,</span>
+        <span class="nx">use</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">loader</span><span class="o">:</span> <span class="nx">MiniCssExtractPlugin</span><span class="p">.</span><span class="nx">loader</span><span class="p">,</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+              <span class="c1">// publicPath 默认使用 webpackOptions.output中的publicPath</span>
+              <span class="nx">publicPath</span><span class="o">:</span> <span class="s1">&#39;../&#39;</span>
+            <span class="p">},</span>
+          <span class="p">},</span>
+          <span class="s1">&#39;css-loader&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">MiniCssExtractPlugin</span><span class="p">({</span>
+      <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;[name].css&#39;</span><span class="p">,</span>
+      <span class="nx">chunkFilename</span><span class="o">:</span> <span class="s1">&#39;[id].css&#39;</span><span class="p">,</span>
+    <span class="p">}),</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>样式预处理<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="sass">
+<h3>Sass<a class="headerlink" href="#sass" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Sass是css语法增强,目前有两种语法,主流使用SCSS</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sass-loader</span></code> 将SCSS编译为css</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">node-sass</span></code>真正编译, <code class="docutils literal notranslate"><span class="pre">sass-loader</span></code>黏合剂作用</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>npm install sass-loader
+
+<span class="nv">SASS_BINARY_SITE</span><span class="o">=</span>https://npm.taobao.org/mirrors/node-sass/ npm install node-sass
+</pre></div>
+</div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.(sc|c)ss$/</span><span class="p">,</span>
+        <span class="nx">use</span><span class="o">:</span> <span class="p">[</span>
+          <span class="s1">&#39;style-loader&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;css-loader&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sass-loader&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="postcss">
+<h3>Postcss<a class="headerlink" href="#postcss" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">postcss-loader</span></code>结合<code class="docutils literal notranslate"><span class="pre">autoprefixer</span></code>自动加样式前缀</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>npm install postcss postcss-loader autoprefixer
+</pre></div>
+</div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// webpack.config.js</span>
+<span class="p">{</span>
+    <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.(sc|c)ss$/</span><span class="p">,</span>
+    <span class="nx">use</span><span class="o">:</span> <span class="p">[</span>
+        <span class="nx">MiniCssExtractPlugin</span><span class="p">.</span><span class="nx">loader</span><span class="p">,</span>
+        <span class="s1">&#39;css-loader&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;sass-loader&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;postcss-loader&#39;</span><span class="p">,</span>
+            <span class="c1">// options: {</span>
+            <span class="c1">//     config: {</span>
+            <span class="c1">//         path: path.resolve(__dirname, &#39;./postcss.config.js&#39;)</span>
+            <span class="c1">//     }</span>
+            <span class="c1">// }</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// postcss.config.js</span>
+<span class="kr">const</span> <span class="nx">autoprefixer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;autoprefixer&#39;</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+        <span class="nx">autoprefixer</span><span class="p">({</span>
+          <span class="nx">overrideBrowserslist</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s1">&#39;&gt; 1%&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;last 3 version&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;android 4.2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ie 8&#39;</span>
+          <span class="p">]</span>
+        <span class="p">})</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="stylelint">
+<h2>stylelint<a class="headerlink" href="#stylelint" title="永久链接至标题">¶</a></h2>
+<p>参考: <a class="reference external" href="https://stylelint.io/user-guide/rules">stylelint rules</a></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>npm install stylelint
+</pre></div>
+</div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// postcss.config.js</span>
+<span class="kr">const</span> <span class="nx">stylelint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;stylelint&#39;</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+        <span class="nx">stylelint</span><span class="p">({</span>
+          <span class="nx">config</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">rules</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s1">&#39;declaration-no-important&#39;</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../static/favicon.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html">Article</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<p class="caption"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">1. 开发工具</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Nick Na.
+      |
+      <a href="../../sources/article/webpack/style.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

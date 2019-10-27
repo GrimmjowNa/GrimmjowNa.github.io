@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>Webpack总览 &#8212; Article  文档</title>
+    <link rel="stylesheet" href="../../static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../static/language_data.js"></script>
+    <script type="text/javascript" src="../../static/translations.js"></script>
+    <link rel="shortcut icon" href="../../static/favicon.png"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="webpack">
+<h1>Webpack总览<a class="headerlink" href="#webpack" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>安装<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># webpack 核心模块</span>
+<span class="c1"># webpack-cli 命令行工具</span>
+npm install webpack webpack-cli --save-dev
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>命令行方式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>npx webpack --entry<span class="o">=</span>./index.js --output-filename<span class="o">=</span>buindle.js --mode<span class="o">=</span>development
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>npx: 运行非全局安装命令</p></li>
+<li><p>entry: 资源打包的入口, webpack从这里开始进行模块依赖查找, 默认<code class="docutils literal notranslate"><span class="pre">src/index.js</span></code></p></li>
+<li><p>output: 输出资源名</p></li>
+<li><p>mode: development, production, none</p></li>
+</ul>
+</div>
+<div class="section" id="npm-script">
+<h2>使用npm script方式<a class="headerlink" href="#npm-script" title="永久链接至标题">¶</a></h2>
+<p>package.json中添加</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span> <span class="s2">&quot;script&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;build&quot;</span><span class="o">:</span> <span class="s2">&quot;webpack --entry=./index.js --output-filename=buindle.js --mode=development&quot;</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>script中可以直接运行模块内添加的指令.</p>
+</div>
+<div class="section" id="id3">
+<h2>使用配置文件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>默认 webpack.config.js</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output-filename</span></code>配置文件中为分层格式</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output-path</span></code>为绝对路径</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// webpack.config.js</span>
+<span class="kd">var</span> <span class="nx">path</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">path</span>  <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">)</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">entry</span><span class="o">:</span> <span class="s1">&#39;./src/index.js&#39;</span><span class="p">,</span>
+    <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">path</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">root</span><span class="p">,</span> <span class="s1">&#39;dist&#39;</span><span class="p">),</span>
+        <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;bundke.js&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;development&#39;</span>
+<span class="p">}</span>
+
+<span class="c1">// package.json</span>
+<span class="s2">&quot;script&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;build&quot;</span><span class="o">:</span> <span class="s2">&quot;webpack&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dev-server">
+<h2>Dev server<a class="headerlink" href="#dev-server" title="永久链接至标题">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>npm install webpack-dev-server --save-dev
+</pre></div>
+</div>
+<p>通过<code class="docutils literal notranslate"><span class="pre">--save-dev</span></code>安装的依赖,会添加到package.json的<code class="docutils literal notranslate"><span class="pre">devDependencies</span></code>下, 表示只在开发环境中使用
+生产环境通过运行<code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">--production</span></code>过滤带哦<code class="docutils literal notranslate"><span class="pre">devDependencies</span></code>中的模块.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// package.json</span>
+    <span class="s2">&quot;script&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;serve&quot;</span><span class="o">:</span> <span class="s2">&quot;webpack-dev-server&quot;</span>
+    <span class="p">}</span>
+
+<span class="c1">// webpack.config.js</span>
+    <span class="nx">devServer</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">publicPath</span><span class="o">:</span> <span class="s1">&#39;/dist&#39;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="id4">
+<h3>工作原理<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>令webpack进行模块打包, 并处理打包结果的资源请求</p></li>
+<li><p>作为web服务器, 处理静态资源文件请求</p></li>
+<li><p>收到浏览器资源请求时, 先进行URL校验</p>
+<ul>
+<li><p>是资源服务地址, 即<code class="docutils literal notranslate"><span class="pre">publicPath</span></code>配置路径下, 寻找资源并返回给浏览器</p></li>
+<li><p>不是资源服务地址, 直接读取硬盘资源文件并返回</p></li>
+</ul>
+</li>
+<li><p>打包只是放在内存中, 收到请求返回的是内存中的打包结果</p></li>
+<li><p>live-reloading (自动刷新)</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../static/favicon.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html">Article</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<p class="caption"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">1. 开发工具</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Nick Na.
+      |
+      <a href="../../sources/article/webpack/guide.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

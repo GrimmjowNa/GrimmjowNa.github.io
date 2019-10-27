@@ -9,4 +9,3 @@
    sublime
    git
    docker/index
-   webpack/index

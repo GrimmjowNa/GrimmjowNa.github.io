@@ -13,6 +13,7 @@ Nick's pages!
    :caption: 目录:
 
    article/tools/index
+   webpack/index
 
 * :ref:`genindex`
 * :ref:`search`
