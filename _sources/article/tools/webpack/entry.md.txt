@@ -23,7 +23,7 @@
 ## 出口
 
 - path: 资源输出路径,绝对路径
-- publicPath: 资源请求位置
+- publicPath: 资源请求位置,(通过首屏js再次加载的js路径)
 - filename: 文件名或路径
   - 模板字符串,主要用于生产配置,开发不需要配置
     - [hash] 模块标识符(module identifier)的 hash

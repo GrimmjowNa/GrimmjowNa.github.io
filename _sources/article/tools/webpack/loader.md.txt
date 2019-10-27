@@ -80,3 +80,21 @@ npm install --save-dev　babel-preset-env
 ```shell
 npm install ts-loader typescript
 ```
+
+### style-loader & css loader
+
+```js
+{
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" }
+        ]
+      }
+    ]
+  }
+}
+```

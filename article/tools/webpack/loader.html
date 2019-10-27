@@ -16,6 +16,7 @@
     <link rel="shortcut icon" href="../../../static/favicon.png"/>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="1.4.5. 样式处理" href="style.html" />
     <link rel="prev" title="1.4.3. 输入和输出" href="entry.html" />
    
   <link rel="stylesheet" href="../../../static/custom.css" type="text/css" />
@@ -116,6 +117,24 @@ npm install --save-dev　babel-preset-env
 </pre></div>
 </div>
 </div>
+<div class="section" id="style-loader-css-loader">
+<h3>1.4.4.3.3. style-loader &amp; css loader<a class="headerlink" href="#style-loader-css-loader" title="永久链接至标题">¶</a></h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.css$/</span><span class="p">,</span>
+        <span class="nx">use</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span> <span class="nx">loader</span><span class="o">:</span> <span class="s2">&quot;style-loader&quot;</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="nx">loader</span><span class="o">:</span> <span class="s2">&quot;css-loader&quot;</span> <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -157,6 +176,7 @@ npm install --save-dev　babel-preset-env
   <li><a href="../index.html">1. 开发工具</a><ul>
   <li><a href="index.html">1.4. Webpack笔记</a><ul>
       <li>Previous: <a href="entry.html" title="上一章">1.4.3. 输入和输出</a></li>
+      <li>Next: <a href="style.html" title="下一章">1.4.5. 样式处理</a></li>
   </ul></li>
   </ul></li>
   </ul></li>

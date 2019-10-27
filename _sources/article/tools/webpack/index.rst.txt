@@ -10,3 +10,6 @@ Webpack笔记
    modules
    entry
    loader
+   style
+   split
+
