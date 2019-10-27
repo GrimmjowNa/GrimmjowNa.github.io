@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>Loader &#8212; Article  文档</title>
+    <title>2.4. Loader &#8212; Article  文档</title>
     <link rel="stylesheet" href="../../static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
@@ -16,6 +16,8 @@
     <link rel="shortcut icon" href="../../static/favicon.png"/>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="2.5. 样式处理" href="style.html" />
+    <link rel="prev" title="2.3. 输入和输出" href="entry.html" />
    
   <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
   
@@ -33,9 +35,9 @@
           <div class="body" role="main">
             
   <div class="section" id="loader">
-<h1>Loader<a class="headerlink" href="#loader" title="永久链接至标题">¶</a></h1>
+<h1>2.4. Loader<a class="headerlink" href="#loader" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id1">
-<h2>简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<h2>2.4.1. 简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>每个loader本质是一个函数</p></li>
 <li><p>一个loader的输入是工程源文件的字符串或者上一个loader的输出</p></li>
@@ -44,7 +46,7 @@
 </ul>
 </div>
 <div class="section" id="id2">
-<h2>配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2>2.4.2. 配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">module.rules</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">test</span></code> 正则表达式 匹配模块</p></li>
@@ -58,9 +60,9 @@
 </ul>
 </div>
 <div class="section" id="id3">
-<h2>常用loader配置<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2>2.4.3. 常用loader配置<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="babel-loader">
-<h3>babel-loader<a class="headerlink" href="#babel-loader" title="永久链接至标题">¶</a></h3>
+<h3>2.4.3.1. babel-loader<a class="headerlink" href="#babel-loader" title="永久链接至标题">¶</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安装</span>
 npm install babel-loader @babel/core @babel/preset-env
 </pre></div>
@@ -109,14 +111,14 @@ npm install --save-dev　babel-preset-env
 </div>
 </div>
 <div class="section" id="ts-loader">
-<h3>ts-loader<a class="headerlink" href="#ts-loader" title="永久链接至标题">¶</a></h3>
+<h3>2.4.3.2. ts-loader<a class="headerlink" href="#ts-loader" title="永久链接至标题">¶</a></h3>
 <p>参考: <a class="reference external" href="https://github.com/TypeStrong/ts-loader">ts-loader</a></p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>npm install ts-loader typescript
 </pre></div>
 </div>
 </div>
 <div class="section" id="style-loader-css-loader">
-<h3>style-loader &amp; css loader<a class="headerlink" href="#style-loader-css-loader" title="永久链接至标题">¶</a></h3>
+<h3>2.4.3.3. style-loader &amp; css loader<a class="headerlink" href="#style-loader-css-loader" title="永久链接至标题">¶</a></h3>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
@@ -157,14 +159,28 @@ npm install --save-dev　babel-preset-env
 
 <h3>导航</h3>
 <p class="caption"><span class="caption-text">目录:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../tools/index.html">1. 开发工具</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Webpack笔记</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="guide.html">2.1. Webpack总览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">2.2. Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entry.html">2.3. 输入和输出</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style.html">2.5. 样式处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="split.html">2.6. 代码切片</a></li>
+<li class="toctree-l2"><a class="reference internal" href="env.html">2.7. 环境配置</a></li>
+</ul>
+</li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">2. Webpack笔记</a><ul>
+      <li>Previous: <a href="entry.html" title="上一章">2.3. 输入和输出</a></li>
+      <li>Next: <a href="style.html" title="下一章">2.5. 样式处理</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
