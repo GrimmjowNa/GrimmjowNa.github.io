@@ -1,0 +1,90 @@
+Webpack总览
+================================
+
+## 安装
+
+```shell
+# webpack 核心模块
+# webpack-cli 命令行工具
+npm install webpack webpack-cli --save-dev
+```
+
+## 命令行方式
+
+```shell
+npx webpack --entry=./index.js --output-filename=buindle.js --mode=development
+```
+- npx: 运行非全局安装命令
+- entry: 资源打包的入口, webpack从这里开始进行模块依赖查找, 默认`src/index.js`
+- output: 输出资源名
+- mode: development, production, none
+
+## 使用npm script方式
+
+package.json中添加
+```js
+ "script": {
+    "build": "webpack --entry=./index.js --output-filename=buindle.js --mode=development"
+ }
+```
+script中可以直接运行模块内添加的指令.
+
+## 使用配置文件
+
+- 默认 webpack.config.js
+- `output-filename`配置文件中为分层格式
+- `output-path`为绝对路径
+
+```js
+// webpack.config.js
+var path  = require('path')
+var root = path.resolve(__dirname)
+
+var path  = require('path')
+var root = path.resolve(__dirname)
+
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: path.join(root, 'dist'),
+        filename: 'bundke.js'
+    },
+    mode: 'development'
+}
+
+// package.json
+"script": {
+    "build": "webpack"
+}
+```
+
+## Dev server
+
+```shell
+npm install webpack-dev-server --save-dev
+```
+
+通过`--save-dev`安装的依赖,会添加到package.json的`devDependencies`下, 表示只在开发环境中使用
+生产环境通过运行`npm install --production`过滤带哦`devDependencies`中的模块.
+
+```js
+// package.json
+    "script": {
+        "serve": "webpack-dev-server"
+    }
+
+// webpack.config.js
+    devServer: {
+        publicPath: '/dist'
+    }
+```
+
+#### 工作原理
+
+- 令webpack进行模块打包, 并处理打包结果的资源请求
+- 作为web服务器, 处理静态资源文件请求
+- 收到浏览器资源请求时, 先进行URL校验
+  - 是资源服务地址, 即`publicPath`配置路径下, 寻找资源并返回给浏览器
+  - 不是资源服务地址, 直接读取硬盘资源文件并返回
+- 打包只是放在内存中, 收到请求返回的是内存中的打包结果
+- live-reloading (自动刷新)
