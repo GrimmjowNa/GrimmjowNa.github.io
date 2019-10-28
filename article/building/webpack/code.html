@@ -59,7 +59,8 @@
     <span class="s2">&quot;style-loader&quot;</span><span class="o">:</span> <span class="s2">&quot;^1.0.0&quot;</span><span class="p">,</span>
     <span class="s2">&quot;stylelint&quot;</span><span class="o">:</span> <span class="s2">&quot;^11.1.1&quot;</span><span class="p">,</span>
     <span class="s2">&quot;ts-loader&quot;</span><span class="o">:</span> <span class="s2">&quot;^6.2.1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;typescript&quot;</span><span class="o">:</span> <span class="s2">&quot;^3.6.4&quot;</span>
+    <span class="s2">&quot;typescript&quot;</span><span class="o">:</span> <span class="s2">&quot;^3.6.4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;file-loader&quot;</span><span class="o">:</span> <span class="s2">&quot;^4.2.0&quot;</span><span class="p">,</span>
   <span class="p">}</span>
 </pre></div>
 </div>
@@ -123,6 +124,17 @@
             <span class="nx">use</span><span class="o">:</span> <span class="p">{</span>
                 <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;ts-loader&#39;</span>
             <span class="p">}</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.(ttf|eot|svg|woff|woff2)$/</span><span class="p">,</span>
+            <span class="nx">use</span><span class="o">:</span> <span class="p">[{</span>
+                <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;file-loader&#39;</span><span class="p">,</span>
+                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">limit</span><span class="o">:</span> <span class="mi">50000</span><span class="p">,</span>
+                    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;[name].[ext]&#39;</span><span class="p">,</span>
+                    <span class="nx">publicPath</span><span class="o">:</span> <span class="s1">&#39;font/&#39;</span><span class="p">,</span>
+                    <span class="nx">outputPath</span><span class="o">:</span> <span class="s1">&#39;font&#39;</span>
+                <span class="p">}</span>
+            <span class="p">}]</span>
         <span class="p">}]</span>
     <span class="p">},</span>
     <span class="nx">devServer</span><span class="o">:</span> <span class="p">{</span>
@@ -216,6 +228,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../javascript/index.html">3. Javascript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../leetcode/index.html">4. LeetCode</a></li>
 </ul>
 
 <div class="relations">

@@ -15,6 +15,7 @@ Nick's note!
    article/tools/index
    article/building/index
    article/javascript/index
+   article/leetcode/index
 
 * :ref:`genindex`
 * :ref:`search`
