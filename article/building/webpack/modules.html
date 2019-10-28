@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>2.1.2. Modules &#8212; Article  文档</title>
+    <link rel="stylesheet" href="../../../static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../../static/language_data.js"></script>
+    <script type="text/javascript" src="../../../static/translations.js"></script>
+    <link rel="shortcut icon" href="../../../static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="2.1.3. 输入和输出" href="entry.html" />
+    <link rel="prev" title="2.1.1. Webpack总览" href="guide.html" />
+   
+  <link rel="stylesheet" href="../../../static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="modules">
+<h1>2.1.2. Modules<a class="headerlink" href="#modules" title="永久链接至标题">¶</a></h1>
+<div class="section" id="commonjs">
+<h2>2.1.2.1. CommonJS<a class="headerlink" href="#commonjs" title="永久链接至标题">¶</a></h2>
+<p>参考: <a class="reference external" href="http://javascript.ruanyifeng.com/nodejs/module.html">CommonJS规范</a></p>
+<ul class="simple">
+<li><p>Node使用CommonJS模块规范，内置的<code class="docutils literal notranslate"><span class="pre">require</span></code>命令用于加载模块文件。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">require</span></code>命令的基本功能是，读入并执行一个JavaScript文件，然后返回该模块的exports对象。</p></li>
+<li><p>CommonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作</p></li>
+<li><p>module.exports属性表示当前模块对外输出的接口，其他文件加载该模块，实际上就是读取module.exports变量。</p></li>
+<li><p>事件监听,使用<code class="docutils literal notranslate"><span class="pre">emit</span></code>和<code class="docutils literal notranslate"><span class="pre">on</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="es6-module">
+<h2>2.1.2.2. ES6 Module<a class="headerlink" href="#es6-module" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>自动采用严格模式</p></li>
+<li><p>导出</p>
+<ul>
+<li><p>命名导出(可使用as关键字)</p></li>
+<li><p>默认导出</p></li>
+</ul>
+</li>
+<li><p>导入</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">{</span> <span class="pre">name</span> <span class="pre">}</span> <span class="pre">from</span> <span class="pre">...</span></code>相当于当前作用于下声明变量</p></li>
+<li><p>整体导入 <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span> <span class="pre">as</span> <span class="pre">module</span> <span class="pre">from</span> <span class="pre">...</span></code></p></li>
+<li><p>混合导入 <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">React</span> <span class="pre">{</span> <span class="pre">Componment</span> <span class="pre">}</span> <span class="pre">from</span> <span class="pre">...</span></code></p></li>
+</ul>
+</li>
+<li><p>导入导出复合写法</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">{</span> <span class="pre">name</span> <span class="pre">}</span> <span class="pre">from</span> <span class="pre">...</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="commonjs-es6-module">
+<h3>2.1.2.2.1. CommonJS &amp; ES6 Module<a class="headerlink" href="#commonjs-es6-module" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Commonjs 动态的, 运行阶段</p>
+<ul>
+<li><p>导入是值拷贝</p></li>
+</ul>
+</li>
+<li><p>ES6 Module 静态的, 编译阶段</p>
+<ul>
+<li><p>声明式的,不支持路径表达式</p></li>
+<li><p>位于模块顶层作用域, 不能放在<code class="docutils literal notranslate"><span class="pre">if</span></code>等语句下</p></li>
+<li><p>导入是值动态映射,只读</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>2.1.2.3. 其他<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>非模块化文件</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">'./jquery.min.js'</span></code>与直接用<code class="docutils literal notranslate"><span class="pre">script</span></code>标签效果一样</p></li>
+</ul>
+</li>
+<li><p>AMD (Asynchronous Module Definition)</p></li>
+<li><p>UMD (Universal Module Definition) 通用模块标准</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// way 1</span>
+<span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kr">export</span> <span class="p">{</span> <span class="nx">a</span> <span class="p">};</span>
+
+<span class="c1">// way 2</span>
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../static/favicon.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../../index.html">Article</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">1. 开发工具</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">2. 构建工具</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">2.1. Webpack笔记</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">2. 构建工具</a><ul>
+  <li><a href="index.html">2.1. Webpack笔记</a><ul>
+      <li>Previous: <a href="guide.html" title="上一章">2.1.1. Webpack总览</a></li>
+      <li>Next: <a href="entry.html" title="下一章">2.1.3. 输入和输出</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Nick Na.
+      |
+      <a href="../../../sources/article/building/webpack/modules.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
