@@ -6,5 +6,9 @@ ECMAScript
 - [ECMA最新资讯](https://www.ecma-international.org/news/index.html)
 - [tc39](https://github.com/tc39)
 
-## Babel
+## Babel 代码转换
 - [babel-preset-env](https://babeljs.io/docs/en/babel-preset-env/)
+
+## eslint 代码检查
+
+- [rules](http://eslint.cn/docs/rules/)
