@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>Drupal笔记 &#8212; Article  文档</title>
+    <link rel="stylesheet" href="../../static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../static/language_data.js"></script>
+    <script type="text/javascript" src="../../static/translations.js"></script>
+    <link rel="shortcut icon" href="../../static/favicon.png"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="drupal">
+<h1>Drupal笔记<a class="headerlink" href="#drupal" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/PacktPublishing/Drupal-8-Module-Development-Second-Edition">demo code</a></p></li>
+<li><p><a class="reference external" href="https://api.drupal.org/api/drupal/8.7.x">api</a></p></li>
+</ul>
+<div class="section" id="id1">
+<h2>环境安装<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安装 mysql</span>
+docker run -p <span class="m">3306</span>:3306<span class="se">\</span>
+    -e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root <span class="se">\</span>
+    -e <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>drupal <span class="se">\</span>
+    -e <span class="nv">MYSQL_USER</span><span class="o">=</span>drupal <span class="se">\</span>
+    -e <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>drupal <span class="se">\</span>
+    -v <span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/mariadb:/var/lib/mysql <span class="se">\</span>
+    -d --name drupal-mariadb mariadb
+
+<span class="c1"># 访问</span>
+docker <span class="nb">exec</span> -it drupal-mariadb bash
+mysql -u drupal -p
+drupal
+
+<span class="c1"># 安装 phpadmin</span>
+<span class="c1"># http://127.0.0.1:8088</span>
+sudo docker run -p <span class="m">8088</span>:80<span class="se">\</span>
+    --name drupal-phpadmin <span class="se">\</span>
+    --link drupal-mariadb:db <span class="se">\</span>
+    -d phpmyadmin/phpmyadmin
+
+<span class="c1"># 安装 drupal</span>
+docker run -p <span class="m">81</span>:80 <span class="se">\</span>
+    --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/app,target<span class="o">=</span>/var/www/html <span class="se">\</span>
+    --name drupal8 <span class="se">\</span>
+    --link drupal-mariadb:mysql <span class="se">\</span>
+    -d drupal:8.7.8
+
+<span class="c1"># 项目代码解压到app路径下</span>
+<span class="nb">cd</span> <span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/app
+
+<span class="k">if</span> <span class="o">[</span> ! -d sites/default/files  <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+  mkdir sites/default/files
+  mkdir sites/default/files/translations
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> ! -f sites/default/settings.php  <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+  cp sites/default/default.settings.php sites/default/settings.php
+<span class="k">fi</span>
+
+chmod a+w sites/default/files
+chmod a+w sites/default/files/translations
+chmod a+w sites/default/settings.php
+</pre></div>
+</div>
+<p>访问 <a class="reference external" href="http://127.0.0.1:81/">http://127.0.0.1:81/</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../static/favicon.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html">Article</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<p class="caption"><span class="caption-text">目录:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">1. 开发工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/index.html">2. 构建工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/index.html">3. Javascript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">4. Drupal</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Nick Na.
+      |
+      <a href="../../sources/article/drupal/note.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

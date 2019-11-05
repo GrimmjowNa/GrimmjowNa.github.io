@@ -1,0 +1,21 @@
+.. Bolg documentation master file, created by
+   sphinx-quickstart on Tue Oct 15 15:49:56 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Nick's note!
+================================
+
+.. toctree::
+   :numbered:
+   :titlesonly:
+   :maxdepth: 2
+   :caption: 目录:
+
+   article/tools/index
+   article/building/index
+   article/javascript/index
+   article/drupal/index
+
+* :ref:`genindex`
+* :ref:`search`
