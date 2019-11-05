@@ -32,3 +32,6 @@ Webpack学习路线
  - [rimraf](https://github.com/isaacs/rimraf)
  - [webpack](https://www.webpackjs.com/concepts/)
  - [babel](https://babel.docschina.org/)
+ - [flow]https://flow.org/
+ - [Babel](https://babel.docschina.org/)
+ - [typescript](https://www.typescriptlang.org/)
