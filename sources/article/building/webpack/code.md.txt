@@ -1,4 +1,0 @@
-代码参考
-================================
-
-[纯webpack脚手架](https://github.com/base-structure/webpack-pages)
