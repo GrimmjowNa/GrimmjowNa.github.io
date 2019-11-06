@@ -3,18 +3,4 @@ Drupal笔记
 
 ## 模块
 
-在`modules`下新建`\{module_name}` 文件夹
-
-#### 模块帮助页面
-
-- 路径 `/admin/help/{module_name}`
-- 添加`{module_name}.module`文件
-- 实现`{module_name}_help($route_name, RouteMatchInterface $route_match)`方法
-  - `$route_name`值为 'help.page.{module_name}'
-
-#### 路由
-
-- `{module_name}.routing.yml`
-- 路由格式 [DOC](https://www.drupal.org/docs/8/api/routing-system/structure-of-routes)
-- `_controller`配置`controller::method`
- - 继承 `Drupal\Core\Controller\ControllerBase`
+- 安装模块`Devel`，`Update Manager`

@@ -37,28 +37,9 @@
 <h1>4.2. Drupal笔记<a class="headerlink" href="#drupal" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id1">
 <h2>4.2.1. 模块<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p>在<code class="docutils literal notranslate"><span class="pre">modules</span></code>下新建<code class="docutils literal notranslate"><span class="pre">\{module_name}</span></code> 文件夹</p>
-<div class="section" id="id2">
-<h3>4.2.1.1. 模块帮助页面<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
-<li><p>路径 <code class="docutils literal notranslate"><span class="pre">/admin/help/{module_name}</span></code></p></li>
-<li><p>添加<code class="docutils literal notranslate"><span class="pre">{module_name}.module</span></code>文件</p></li>
-<li><p>实现<code class="docutils literal notranslate"><span class="pre">{module_name}_help($route_name,</span> <span class="pre">RouteMatchInterface</span> <span class="pre">$route_match)</span></code>方法</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">$route_name</span></code>值为 ‘help.page.{module_name}’</p></li>
+<li><p>安装模块<code class="docutils literal notranslate"><span class="pre">Devel</span></code>，<code class="docutils literal notranslate"><span class="pre">Update</span> <span class="pre">Manager</span></code></p></li>
 </ul>
-</li>
-</ul>
-</div>
-<div class="section" id="id3">
-<h3>4.2.1.2. 路由<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">{module_name}.routing.yml</span></code></p></li>
-<li><p>路由格式 <a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/structure-of-routes">DOC</a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">_controller</span></code>配置<code class="docutils literal notranslate"><span class="pre">controller::method</span></code></p></li>
-<li><p>继承 <code class="docutils literal notranslate"><span class="pre">Drupal\Core\Controller\ControllerBase</span></code></p></li>
-</ul>
-</div>
 </div>
 </div>
 
