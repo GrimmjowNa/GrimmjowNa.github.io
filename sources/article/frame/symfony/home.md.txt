@@ -1,5 +1,6 @@
 
 [文档](https://symfony.com/doc/current/index.html)
+[中文文档](http://symfonychina.com)
 
 ## 环境搭建
 
