@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.2.1. 环境搭建 &#8212; Article  文档</title>
+    <link rel="stylesheet" href="../../../static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../../static/language_data.js"></script>
+    <script type="text/javascript" src="../../../static/translations.js"></script>
+    <link rel="shortcut icon" href="../../../static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="4.2.2. 常用命令" href="console.html" />
+    <link rel="prev" title="4.2. Symfony" href="index.html" />
+   
+  <link rel="stylesheet" href="../../../static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <p><a class="reference external" href="https://symfony.com/doc/current/index.html">文档</a></p>
+<div class="section" id="id1">
+<h1>4.2.1. 环境搭建<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="docker">
+<h2>4.2.1.1. Docker环境搭建<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">https://github.com/base-structure/docker-php-env/tree/feat-Symfony2</span></code></p>
+</div>
+<div class="section" id="nginx">
+<h2>4.2.1.2. nginx配置<a class="headerlink" href="#nginx" title="永久链接至标题">¶</a></h2>
+<p>不同版本入口文件可能不一样，一下为<code class="docutils literal notranslate"><span class="pre">symfony4.3.6</span></code>，入口文件位于项目路径下的<code class="docutils literal notranslate"><span class="pre">public/index.php</span></code>, 所有请求都通过入口文件rewrite. <code class="docutils literal notranslate"><span class="pre">symfony3</span></code>入口文件对应为<code class="docutils literal notranslate"><span class="pre">web/app.php</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">fastcgi_pass</span>&#160;&#160; <span class="pre">php:9000;</span></code> php为<code class="docutils literal notranslate"><span class="pre">php-fpm</span></code> docker容器名</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server {
+    listen       80;
+    
+    root   /usr/share/nginx/html/public;
+    index index.php;
+
+    location / {
+        try_files $uri /index.php$is_args$args;
+    }
+
+    location ~ ^/index\.php(/|$) {
+        fastcgi_pass   php:9000;
+        fastcgi_param  SCRIPT_FILENAME  /var/www/html/public/$fastcgi_script_name;
+        include        fastcgi_params;
+
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_split_path_info ^(.+\.php)(.*)$;
+
+        fastcgi_param DOCUMENT_ROOT $document_root;
+        internal;
+   }
+
+   location ~ \.php$ {
+     return 404;
+   }
+}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../static/favicon.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../../index.html">Article</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">1. 开发工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../building/index.html">2. 构建工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../javascript/index.html">3. Javascript</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">4. 框架</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../drupal/index.html">4.1. Drupal</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">4.2. Symfony</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">4. 框架</a><ul>
+  <li><a href="index.html">4.2. Symfony</a><ul>
+      <li>Previous: <a href="index.html" title="上一章">4.2. Symfony</a></li>
+      <li>Next: <a href="console.html" title="下一章">4.2.2. 常用命令</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Nick Na.
+      |
+      <a href="../../../sources/article/frame/symfony/home.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
