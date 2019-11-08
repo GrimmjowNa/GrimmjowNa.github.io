@@ -16,5 +16,6 @@ Nick's note!
    article/building/index
    article/javascript/index
    article/frame/index
+   article/frame-base/index
 
 * :ref:`search`
