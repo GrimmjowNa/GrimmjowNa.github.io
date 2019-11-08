@@ -3,6 +3,8 @@ Nginx
 
 ## Symfony 4
 
+Symfony4的请求入口为`public/index.php`, 所有请求都要从`index.php`转发
+
 ```
 server {
     listen       80;
