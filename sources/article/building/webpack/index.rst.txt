@@ -6,6 +6,8 @@ Webpack笔记
    :maxdepth: 2
    :caption: 目录:
 
+   code
+   ways
    guide
    modules
    entry
@@ -13,4 +15,3 @@ Webpack笔记
    style
    split
    env
-   code

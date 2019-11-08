@@ -17,5 +17,4 @@ Nick's note!
    article/javascript/index
    article/drupal/index
 
-* :ref:`genindex`
 * :ref:`search`
